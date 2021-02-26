@@ -57,6 +57,15 @@ body {
     margin: 0 auto;
   }
 }
+
+#navbarBottomImage {
+  height: 60px;
+  opacity: 0.9;
+}
+#mobile-nav-toggle button {
+  margin: 0 auto;
+  padding: 2rem;
+}
 @media (min-width: 993px) {
   #portrait-menu {
     display: none;
