@@ -1,0 +1,114 @@
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Circular Pro Book', Arial, sans-serif;
+}
+
+/* Main menu styling */
+#main-menu {
+    text-transform: uppercase;
+}
+.fixed-menu {
+    background-color: white;
+}
+
+.logo-top {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+}
+/* Mobile menu visible only on mobile */
+@media (max-width: 992px) {
+    #portrait-menu {
+        display: block;
+    }
+    .fixed-menu {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 11;
+    }
+    .content {
+        padding-top: 62px;
+    }
+  
+    .navbar-toggler {
+        margin: 0 auto;
+    }
+}
+@media (min-width: 993px) {
+    #portrait-menu {
+        display: none;
+    }
+
+    .fixed-menu{
+        position: fixed;
+        top: 62px;
+        right: 0;
+        left: 0;
+        z-index: 12;
+    }
+    .content {
+        padding-top: 140px;
+    }
+}
+#portrait-menu a a:link a:visited a:hover {
+    color: black;
+}
+#portrait-menu a:hover {
+    text-decoration: underline;
+}
+#portrait-menu h2 {
+    font-size: 1rem;
+    color: black;
+}
+
+/* Footer */
+footer {
+    background-color: #f9cbc8;
+    
+}
+footer p a{
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.scroll-image {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+}
+
+/* circle image in menu */
+ul {
+    list-style: none;
+}
+.image-circle {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 992px) {
+    svg.landscape {
+        display: none;
+    }
+    svg.portrait {
+        display: flex;
+    }
+}
+@media (min-width: 993px) {
+    svg.landscape {
+        display: flex;
+    }
+    svg.portrait {
+        display: none;
+    }
+}
