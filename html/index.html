@@ -12,59 +12,110 @@
     <link rel="stylesheet" href="../css/style.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/showModal.js"></script>
 </head>
 
 <body>
-    <!-- Wrap the content in a fluid container -->
+    <!-- Wrap the content in a fluid container here -->
     <div class="container-fluid px-0">
 
         <!-- main nav bar fixed top-->
-        <nav id="main-menu" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Außen</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Foyer</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Großer-Saal</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mozart-Saal</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Schubert-Saal</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Klavier-Saal</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pausenbuffet</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Backstage</a>
-                    </li>
-                    <span class="main-menu-divider">.</span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Über das Projekt</a>
-                    </li>
-                </ul>
+        <div class="row">
+            <div class="col-12">
+                <a class="logo-top" href="#"><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"></a>
             </div>
+        </div>
+        <div class="row">
+            <nav id="main-menu" class="navbar fixed-menu navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div id="landscape-menu">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="aussen.html">Außen</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="foyer.html">Foyer</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="grosser-saal.html">Großer-Saal</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="mozart-saal.html">Mozart-Saal</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="schubert-saal.html">Schubert-Saal</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Klavier-Saal</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pausenbuffet</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Backstage</a>
+                            </li>
+                            <span class="main-menu-divider">.</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Über das Projekt</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="fixed-menu" id="navbarBottomImage">
+                <div id="portrait-menu">
+                    <div class="row">
+                        <div class="col-12 pt-4 pb-4 text-center">
+                            <button id="mobile-nav-toggle" class="" type="button">X
+                                Räume X</button>
+                        </div>
+                    </div>
+                    <ul class="row text-center menu-list">
+                        <li class="menu-item col-sm-4 col-6">
+                            <a href="aussen.html">
+                                <img src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg" alt="" class="image-circle">
+                                <h2>Außen</h2>
+                            </a>
+                        </li>
+                        <li class="menu-item col-sm-4 col-6">
+                            <a href="foyer.html">
+                                <img src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg" alt="" class="image-circle">
+                                <h2>Foyer</h2>
+                        </li>
+                        <li class="menu-item col-sm-4 col-6">
+                            <a href="grosser-saal.html">
+                                <img src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg" alt="" class="image-circle">
+                                <h2>Großer Saal</h2>
+                        </li>
+                        <li class="menu-item col-sm-4 col-6">
+                            <a href="mozart-saal.html">
+                                <img src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg" alt="" class="image-circle">
+                                <h2>Mozart Saal</h2>
+                        </li>
+                        <li class="menu-item col-sm-4 col-6">
+                            <a href="schubert-saal.html">
+                                <img src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg" alt="" class="image-circle">
+                                <h2>Schubert Saal</h2>
+                            </a>
+                        </li>
+                        <li class="menu-item col-sm-4 col-6">
+                            <a href="berio-saal">
+                                <img src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg" alt="" class="image-circle">
+                                <h2>Berio Saal</h2>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         </nav>
         <!-- main container -->
         <div class="content">
@@ -72,32 +123,64 @@
                 <div class="col-md-12 px-0">
                     <div class="image">
                         <figure id="imagemap">
-                            <svg width="100%" height="100%" viewBox="0 0 1842 1212" class="svgbg">
+                            <svg class="landscape" width="100%" height="100%" viewBox="0 0 1842 1212">
                                 <defs>
                                     <style>
-                                        rect:hover {
-                                            fill: aqua;
-                                            opacity: 0.5;
+                                        circle {
+                                            opacity: 0.2;
+                                        }
+
+                                        circle:hover {
+                                            opacity: 0.8;
                                         }
                                     </style>
                                 </defs>
-                                <!-- <image width="1842" height="1212"
-                                    xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1_1.jpg">Wiener Konzerthaus
-                                </image> -->
-                                <a xlink:href="#" data-toggle="modal" data-target="#droneVideo">
-                                    <rect x="300" y="200" opacity="0" width="250" height="250" />
+                                <image width="1842" height="1212"
+                                    xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg">
+                                </image>
+                                <a xlink:href="drone-video.html" class="li-modal">
+                                    <circle cx="300" cy="200" r="100" opacity="0" fill="none" stroke="red"
+                                        stroke-width="30" />
+                                    <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                                 </a>
-                                <a xlink:href="#" data-toggle="modal" data-target="#modalContainer">
-                                    <rect x="1000" y="1000" opacity="0" width="250" height="250" />
+                                <a xlink:href="entrance.html" class="li-modal">
+                                    <circle cx="800" cy="600" r="100" opacity="0" fill="none" stroke="red"
+                                        stroke-width="30" />
+                                    <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
                                 </a>
                                 <a xlink:href="#videos">
-                                    <rect x="550" y="700" opacity="0" width="250" height="250" />
+                                    <circle cx="1100" cy="1200" r="100" opacity="0" fill="none" stroke="red"
+                                        stroke-width="30" />
+                                    <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
+                                </a>
+                            </svg>
+                            <svg class="portrait" width="100%" height="100%" viewBox="0 0 371 590">
+                                <image width="371" height="590"
+                                    xlink:href="../assets/img/wkh_entdecken_fotoauswahl-2.jpg">
+                                </image>
+                                <a xlink:href="drone-video.html" class="li-modal">
+                                    <circle cx="100" cy="100" r="30" opacity="0" fill="none" stroke="red"
+                                        stroke-width="15" />
+                                    <circle cx="100" cy="100" r="10" opacity="0" fill="red" stroke="red"
+                                        stroke-width="15" />
+                                </a>
+                                <a xlink:href="entrance.html" class="li-modal">
+                                    <circle cx="200" cy="300" r="30" opacity="0" fill="none" stroke="red"
+                                        stroke-width="15" />
+                                    <circle cx="200" cy="300" r="10" opacity="0" fill="red" stroke="red"
+                                        stroke-width="15" />
+                                </a>
+                                <a xlink:href="#videos">
+                                    <circle cx="300" cy="500" r="30" opacity="0" fill="none" stroke="red"
+                                        stroke-width="15" />
+                                    <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red"
+                                        stroke-width="15" />
                                 </a>
                             </svg>
                         </figure>
                         <div class="scroll-image">
                             <a href="#videos">
-                                <img src="../assets/ui-elemente-prototyp/btn-desktop-scroll-down.svg" alt="">
+                                <img class="center-block" src="../img/btn-desktop-scroll-down.png">
                             </a>
                         </div>
                     </div>
@@ -109,17 +192,27 @@
                         <h1>Videos</h1>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5 mr-2">
                             <div class="row">
-                                <img src="../assets/img/video.png" alt="" srcset="">
+                                <div class="videoWrapper">
+                                    <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
                             </div>
                             <div class="row">
                                 Erzählungen vom Haus
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5 ml-2">
                             <div class="row">
-                                <img src="../assets/img/video.png" alt="" srcset="">
+                                <div class="videoWrapper">
+                                    <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
                             </div>
                             <div class="row">
                                 Drohnen Video
@@ -131,95 +224,10 @@
         </div>
     </div>
 
-    <!-- Modal container entrance video -->
+    <!-- Modal container drone video -->
     <div class="modal fade" id="modalContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Drohnen-Video</h4>
-                </div>
-                <div class="modal-body">
-                    <!-- youtube embedd-->
-                    <div class="video-container">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Hp_Eg8NMfT0" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                    </div>
-                    <!-- Text aligned rigt -->
-                    <p>Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die
-                        Blindtexte.
-                        Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.
-                        Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen
-                        Regelialien.
-                        Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen.
-                        Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu
-                        unorthographisches Leben.
-                        Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen
-                        in die weite Grammatik.
-                        Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und
-                        hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren.
-                        Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den
-                        Weg.
-                        Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück
-                        auf die Skyline seiner Heimatstadt Buchstabhausen,
-                        die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig
-                        lief ihm eine rhetorische Frage über die Wange,
-                        dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen,
-                        da, wo sie herkäme wäre sie</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal container drone video -->
-    <div class="modal fade" id="droneVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="video-container">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                    <p>Eine wunderbare Heiterkeit hat meine ganze Seele eingenommen, gleich den süßen Frühlingsmorgen,
-                        die ich mit
-                        ganzem Herzen genieße. Ich bin allein und freue mich meines Lebens in dieser Gegend, die für
-                        solche Seelen
-                        geschaffen ist wie die meine. Ich bin so glücklich, mein Bester, so ganz in dem Gefühle von
-                        ruhigem Dasein
-                        versunken, daß meine Kunst darunter leidet. Ich könnte jetzt nicht zeichnen, nicht einen Strich,
-                        und bin nie ein
-                        größerer Maler gewesen als in diesen Augenblicken. Wenn das liebe Tal um mich dampft, und die
-                        hohe Sonne an der
-                        Oberfläche der undurchdringlichen Finsternis meines Waldes ruht, und nur einzelne Strahlen sich
-                        in das innere
-                        Heiligtum stehlen, ich dann im hohen Grase am fallenden Bache liege, und näher an der Erde
-                        tausend mannigfaltige
-                        Gräschen mir merkwürdig werden; wenn ich das Wimmeln der kleinen Welt zwischen Halmen, die
-                        unzähligen,
-                        unergründlichen Gestalten der Würmchen, der Mückchen näher an meinem Herzen fühle, und fühle die
-                        Gegenwart des
-                        Allmächtigen, der uns nach seinem Bilde schuf, das Wehen des Alliebenden, der uns in ewiger
-                        Wonne schwebend
-                        trägt und erhält; mein Freund! Wenn's dann um meine Augen dämmert, und die Welt um mich her und
-                        der Himmel ganz
-                        in meiner Seele ruhn wie die Gestalt einer</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default close" data-dismiss="modal"
-                        onclick="closeWindow()">Close</button>
-                </div>
-            </div>
+            <div class="modal-content"></div>
         </div>
     </div>
     </div>
@@ -254,13 +262,55 @@
 
             <p>Premium Sponsoren</p>
 
-            <p>Logo der Firma Wiener Städische <br> Versicherungsverein Logo der Firma Wiener Städische <br> Vienna
+            <p>Logo der Firma Wiener Städtische <br> Versicherungsverein Logo der Firma Wiener Städtische <br> Vienna
                 Insurance Group</p>
             <a href="#">Impressum</a><br>
             <a href="#">Datenschutzerklärung</a><br>
-            <a href="">Allgemeine Verkaufs- und Abonnementbedingungen</a><br>
+            <a href="#">Allgemeine Verkaufs- und Abonnementbedingungen</a><br>
         </div>
     </footer>
+    <script>
+        /* find modal content from external file */
+        $('.li-modal').on('click', function (event) {
+            event.preventDefault();
+            $('#modalContainer').modal('show').find('.modal-content').load($(this).attr('xlink:href'));
+        });
+
+        /* add class visited to main menu */
+        $('.nav-item').on('click', function (event) {
+            item = $('#main-menu option:selected');
+            $('#main-menu').find('.nav-item').removeClass('active');
+            item.addClass('active');
+        });
+
+        /* stop youtube from playing after dismiss */
+        $("#modalContainer").on('hidden.bs.modal', function (e) {
+            $("#modalContainer iframe").attr("src", $("#modalContainer iframe").attr("src"));
+        });
+
+        /* show - hide mobile menu */
+        $("#mobile-nav-toggle").on('click', function (event) {
+            el = $('#navbarBottomImage');
+            buttonName = $('#mobile-nav-toggle');
+            divHeight = el.height();
+            position = el.position();
+            offset = el.offset();
+            menuHeight = $('#portrait-menu').height();
+            if (divHeight <= 60) {
+                el.animate({
+                    duration: 500,
+                    height: menuHeight
+                });
+                buttonName.text(' - Räume -');
+            } else {
+                el.animate({
+                    duration: 500,
+                    height: 60
+                });
+                buttonName.text(' X Räume X');
+            }
+        });
+    </script>
 </body>
 
 <!-- Popper JS -->
