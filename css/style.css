@@ -37,41 +37,40 @@ body {
   background-color: white;
   width: 100%;
 }
-/* Mobile menu visible only on mobile */
-@media (max-width: 992px) {
+/* Mobile menu visible only on mobile, use bootsrap medium break-point  */
+@media (max-width: 768px) {
   #portrait-menu {
     display: block;
   }
-  .fixed-menu {
+  #bottom-menu {
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
     z-index: 11;
   }
-  .content {
-    padding-top: 62px;
-  }
-
-  .navbar-toggler {
-    margin: 0 auto;
-  }
-}
-
-#navbarBottomImage {
-  height: 60px;
-  opacity: 0.9;
-}
-#mobile-nav-toggle button {
-  margin: 0 auto;
-  padding: 2rem;
-}
-@media (min-width: 993px) {
-  #portrait-menu {
+  #top-menu {
     display: none;
   }
+  .content {
+    padding-top: 262px;
+  }
 
-  .fixed-menu {
+  /* change background image to portrait */
+  svg.landscape {
+    display: none;
+  }
+  svg.portrait {
+    display: flex;
+  }
+}
+
+/* Destop version in widescreen, use bootstrap medium breakpoint */
+@media (min-width: 769px) {
+  #bottom-menu {
+    display: none;
+  }
+  #top-menu {
     position: fixed;
     top: 62px;
     right: 0;
@@ -81,7 +80,26 @@ body {
   .content {
     padding-top: 140px;
   }
+
+  /* change background to landscape (widescreen) */
+  svg.landscape {
+    display: flex;
+  }
+  svg.portrait {
+    display: none;
+  }
 }
+
+#bottom-menu {
+  height: 80px;
+  opacity: 0.9;
+}
+#mobile-nav-toggle {
+  border: none;
+  background-color: #dcf3ff;
+  font-size: 2rem;
+}
+
 #portrait-menu a a:link a:visited a:hover {
   color: black;
 }
@@ -117,21 +135,4 @@ ul {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-}
-
-@media (max-width: 992px) {
-  svg.landscape {
-    display: none;
-  }
-  svg.portrait {
-    display: flex;
-  }
-}
-@media (min-width: 993px) {
-  svg.landscape {
-    display: flex;
-  }
-  svg.portrait {
-    display: none;
-  }
 }
