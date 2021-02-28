@@ -25,9 +25,10 @@
                 <a class="logo-top" href="#"><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"></a>
             </div>
         </div>
-        <div class="row">
-            <nav id="main-menu" class="navbar fixed-menu navbar-expand-lg navbar-light bg-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <nav id="main-menu">
+            <div class="row">
+                <div class="navbar fixed-menu navbar-expand-md navbar-light bg-light" id="top-menu">
                     <div id="landscape-menu">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
@@ -68,54 +69,60 @@
                         </ul>
                     </div>
                 </div>
-        </div>
-        <div class="row">
-            <div class="fixed-menu" id="navbarBottomImage">
-                <div id="portrait-menu">
-                    <div class="row">
-                        <div class="col-12 pt-4 pb-4 text-center">
-                            <button id="mobile-nav-toggle" class="" type="button">X
-                                Räume X</button>
+            </div>
+            <div class="row">
+                <div class="fixed-menu" id="bottom-menu">
+                    <div id="portrait-menu">
+                        <div class="row">
+                            <div class="col-12 pt-4 pb-4 text-center">
+                                <button id="mobile-nav-toggle" class="" type="button">X
+                                    Räume X</button>
+                            </div>
                         </div>
+                        <ul class="row text-center menu-list">
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="aussen.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Außen</h2>
+                                </a>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="foyer.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Foyer</h2>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="grosser-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Großer Saal</h2>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="mozart-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Mozart Saal</h2>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="schubert-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Schubert Saal</h2>
+                                </a>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="berio-saal">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Berio Saal</h2>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="row text-center menu-list">
-                        <li class="menu-item col-sm-4 col-6">
-                            <a href="aussen.html">
-                                <img src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg" alt="" class="image-circle">
-                                <h2>Außen</h2>
-                            </a>
-                        </li>
-                        <li class="menu-item col-sm-4 col-6">
-                            <a href="foyer.html">
-                                <img src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg" alt="" class="image-circle">
-                                <h2>Foyer</h2>
-                        </li>
-                        <li class="menu-item col-sm-4 col-6">
-                            <a href="grosser-saal.html">
-                                <img src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg" alt="" class="image-circle">
-                                <h2>Großer Saal</h2>
-                        </li>
-                        <li class="menu-item col-sm-4 col-6">
-                            <a href="mozart-saal.html">
-                                <img src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg" alt="" class="image-circle">
-                                <h2>Mozart Saal</h2>
-                        </li>
-                        <li class="menu-item col-sm-4 col-6">
-                            <a href="schubert-saal.html">
-                                <img src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg" alt="" class="image-circle">
-                                <h2>Schubert Saal</h2>
-                            </a>
-                        </li>
-                        <li class="menu-item col-sm-4 col-6">
-                            <a href="berio-saal">
-                                <img src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg" alt="" class="image-circle">
-                                <h2>Berio Saal</h2>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
-        </div>
         </nav>
         <!-- main container -->
         <div class="content">
@@ -170,18 +177,15 @@
                                     <circle cx="200" cy="300" r="10" opacity="0" fill="red" stroke="red"
                                         stroke-width="15" />
                                 </a>
-                                <a xlink:href="#videos">
-                                    <circle cx="300" cy="500" r="30" opacity="0" fill="none" stroke="red"
-                                        stroke-width="15" />
-                                    <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red"
-                                        stroke-width="15" />
-                                </a>
+                                <circle cx="300" cy="500" r="30" opacity="0" fill="none" stroke="red"
+                                    stroke-width="15" />
+                                <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red" stroke-width="15"
+                                    onclick="scrollToElement('videos')" />
                             </svg>
                         </figure>
                         <div class="scroll-image">
-                            <a href="#videos">
-                                <img class="center-block" src="../img/btn-desktop-scroll-down.png">
-                            </a>
+                            <img class="center-block" src="../img/btn-desktop-scroll-down.png"
+                                onclick="scrollToElement('videos')">
                         </div>
                     </div>
                 </div>
@@ -192,7 +196,7 @@
                         <h1>Videos</h1>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 mr-2">
+                        <div class="col-md-5 ml-0">
                             <div class="row">
                                 <div class="videoWrapper">
                                     <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
@@ -205,7 +209,8 @@
                                 Erzählungen vom Haus
                             </div>
                         </div>
-                        <div class="col-md-5 ml-2">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5 ml-0">
                             <div class="row">
                                 <div class="videoWrapper">
                                     <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
@@ -226,7 +231,7 @@
 
     <!-- Modal container drone video -->
     <div class="modal fade" id="modalContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content"></div>
         </div>
     </div>
@@ -290,13 +295,13 @@
 
         /* show - hide mobile menu */
         $("#mobile-nav-toggle").on('click', function (event) {
-            el = $('#navbarBottomImage');
+            el = $('#bottom-menu');
             buttonName = $('#mobile-nav-toggle');
             divHeight = el.height();
             position = el.position();
             offset = el.offset();
             menuHeight = $('#portrait-menu').height();
-            if (divHeight <= 60) {
+            if (divHeight <= 80) {
                 el.animate({
                     duration: 500,
                     height: menuHeight
@@ -305,11 +310,19 @@
             } else {
                 el.animate({
                     duration: 500,
-                    height: 60
+                    height: 80
                 });
                 buttonName.text(' X Räume X');
             }
         });
+
+        /* scroll to element */
+        function scrollToElement(classID) {
+            el = $('#' + classID);
+            $('html,body').animate({
+                scrollTop: el.offset().top - el.height() / 2
+            }, 500);
+        }
     </script>
 </body>
 
