@@ -53,7 +53,7 @@ body {
     display: none;
   }
   .content {
-    padding-top: 262px;
+    padding-top: 62px;
   }
 
   /* change background image to portrait */
@@ -62,6 +62,11 @@ body {
   }
   svg.portrait {
     display: flex;
+  }
+
+  /* Mobile version of circle full opacity */
+  circle {
+    opacity: 0.5;
   }
 }
 
@@ -88,6 +93,15 @@ body {
   svg.portrait {
     display: none;
   }
+
+  /* svc element circle styling */
+circle {
+  opacity: 0.2;
+}
+
+circle:hover {
+  opacity: 0.8;
+}
 }
 
 #bottom-menu {
@@ -96,7 +110,7 @@ body {
 }
 #mobile-nav-toggle {
   border: none;
-  background-color: #dcf3ff;
+  background-color: rgba(#f9cac7 0.4);
   font-size: 2rem;
 }
 
@@ -123,7 +137,7 @@ footer p a {
 .scroll-image {
   position: absolute;
   top: 80%;
-  left: 50%;
+  left: 45%;
 }
 
 /* circle image in menu */
