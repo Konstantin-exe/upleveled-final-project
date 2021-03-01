@@ -75,8 +75,7 @@
                     <div id="portrait-menu">
                         <div class="row">
                             <div class="col-12 pt-4 pb-4 text-center">
-                                <button id="mobile-nav-toggle" class="" type="button">X
-                                    Räume X</button>
+                                <button id="mobile-nav-toggle" class="" type="button">- Räume -</button>
                             </div>
                         </div>
                         <ul class="row text-center menu-list">
@@ -133,31 +132,25 @@
                             <svg class="landscape" width="100%" height="100%" viewBox="0 0 1842 1212">
                                 <defs>
                                     <style>
-                                        circle {
-                                            opacity: 0.2;
-                                        }
-
-                                        circle:hover {
-                                            opacity: 0.8;
-                                        }
+                             
                                     </style>
                                 </defs>
                                 <image width="1842" height="1212"
                                     xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg">
                                 </image>
                                 <a xlink:href="drone-video.html" class="li-modal">
-                                    <circle cx="300" cy="200" r="100" opacity="0" fill="none" stroke="red"
-                                        stroke-width="30" />
+                                    <circle cx="300" cy="200" r="75" opacity="0" fill="none" stroke="red"
+                                        stroke-width="20" />
                                     <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                                 </a>
                                 <a xlink:href="entrance.html" class="li-modal">
-                                    <circle cx="800" cy="600" r="100" opacity="0" fill="none" stroke="red"
-                                        stroke-width="30" />
+                                    <circle cx="800" cy="600" r="75" opacity="0" fill="none" stroke="red"
+                                        stroke-width="20" />
                                     <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
                                 </a>
                                 <a xlink:href="#videos">
-                                    <circle cx="1100" cy="1200" r="100" opacity="0" fill="none" stroke="red"
-                                        stroke-width="30" />
+                                    <circle cx="1100" cy="1200" r="75" opacity="0" fill="none" stroke="red"
+                                        stroke-width="20" />
                                     <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
                                 </a>
                             </svg>
@@ -166,20 +159,20 @@
                                     xlink:href="../assets/img/wkh_entdecken_fotoauswahl-2.jpg">
                                 </image>
                                 <a xlink:href="drone-video.html" class="li-modal">
-                                    <circle cx="100" cy="100" r="30" opacity="0" fill="none" stroke="red"
-                                        stroke-width="15" />
+                                    <circle cx="100" cy="100" r="15" opacity="0" fill="none" stroke="red"
+                                        stroke-width="5" />
                                     <circle cx="100" cy="100" r="10" opacity="0" fill="red" stroke="red"
-                                        stroke-width="15" />
+                                        stroke-width="0" />
                                 </a>
                                 <a xlink:href="entrance.html" class="li-modal">
-                                    <circle cx="200" cy="300" r="30" opacity="0" fill="none" stroke="red"
-                                        stroke-width="15" />
+                                    <circle cx="200" cy="300" r="15" opacity="0" fill="none" stroke="red"
+                                        stroke-width="5" />
                                     <circle cx="200" cy="300" r="10" opacity="0" fill="red" stroke="red"
-                                        stroke-width="15" />
+                                        stroke-width="0" />
                                 </a>
-                                <circle cx="300" cy="500" r="30" opacity="0" fill="none" stroke="red"
-                                    stroke-width="15" />
-                                <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red" stroke-width="15"
+                                <circle cx="300" cy="500" r="15" opacity="0" fill="none" stroke="red"
+                                    stroke-width="5" />
+                                <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red" stroke-width="0"
                                     onclick="scrollToElement('videos')" />
                             </svg>
                         </figure>
@@ -306,13 +299,13 @@
                     duration: 500,
                     height: menuHeight
                 });
-                buttonName.text(' - Räume -');
+                buttonName.text(' X Räume X');
             } else {
                 el.animate({
                     duration: 500,
                     height: 80
                 });
-                buttonName.text(' X Räume X');
+                buttonName.text(' - Räume -');
             }
         });
 
