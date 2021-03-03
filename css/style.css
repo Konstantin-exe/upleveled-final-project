@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Circular Pro Book", Arial, sans-serif;
+  font-family: 'Circular Pro Book', Arial, sans-serif;
 }
 
 /* Main menu styling */
@@ -36,6 +36,16 @@ body {
   left: 0;
   background-color: white;
   width: 100%;
+  margin: 0;
+  padding: 10px 0;
+}
+
+#navbar-right-toggler {
+  margin: 10px;
+}
+
+.menu-item {
+  margin-bottom: 1.5rem;
 }
 /* Mobile menu visible only on mobile, use bootsrap medium break-point  */
 @media (max-width: 768px) {
@@ -49,10 +59,17 @@ body {
     left: 0;
     z-index: 11;
   }
+  /* hide top menu */
   #top-menu {
     display: none;
   }
+  /* hide menu button */
+  #navbar-right-toggler {
+    display: none;
+  }
+
   .content {
+    margin-top: 10px;
     padding-top: 62px;
   }
 
@@ -78,23 +95,26 @@ body {
   #top-menu {
     position: fixed;
     top: 62px;
-    right: 0;
-    left: 0;
+    right: -100%;
     z-index: 12;
-  }
-  .content {
-    padding-top: 140px;
+    max-width: 385px;
   }
 
-  /* change background to landscape (widescreen) */
-  svg.landscape {
-    display: flex;
+  /* show menu button */
+  #navbar-right-toggler {
+    display: block;
   }
-  svg.portrait {
-    display: none;
-  }
+}
 
-  /* svc element circle styling */
+/* change background to landscape (widescreen) */
+svg.landscape {
+  display: flex;
+}
+svg.portrait {
+  display: none;
+}
+
+/* svc element circle styling */
 circle {
   opacity: 0.2;
 }
@@ -102,11 +122,13 @@ circle {
 circle:hover {
   opacity: 0.8;
 }
+
+#right-menu {
+  margin-top: 30px;
 }
 
 #bottom-menu {
   height: 80px;
-  opacity: 0.9;
 }
 #mobile-nav-toggle {
   border: none;
@@ -114,13 +136,13 @@ circle:hover {
   font-size: 2rem;
 }
 
-#portrait-menu a a:link a:visited a:hover {
+#main-menu a a:link a:visited a:hover {
   color: black;
 }
-#portrait-menu a:hover {
+#main-menu a:hover {
   text-decoration: underline;
 }
-#portrait-menu h2 {
+#main-menu h2 {
   font-size: 1rem;
   color: black;
 }
@@ -149,4 +171,5 @@ ul {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
+  margin-bottom: 0.5rem;
 }
