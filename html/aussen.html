@@ -20,51 +20,60 @@
     <div class="container-fluid px-0">
 
         <!-- main nav bar fixed top-->
-        <div class="row">
-            <div class="col-12">
-                <a class="logo-top" href="#"><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"></a>
+        <div class="row logo-top">
+            <div class="col-11">
+                <a class="" href="#"><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"></a>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-light float-right" type="button" id="navbar-right-toggler" onclick="toggleNavbarRight()">Räume</button>
             </div>
         </div>
 
         <nav id="main-menu">
+            <div class="" style="margin-top: 62px;">         
+            </div>
             <div class="row">
-                <div class="navbar fixed-menu navbar-expand-md navbar-light bg-light" id="top-menu">
-                    <div id="landscape-menu">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="aussen.html">Außen</a>
+                <div class="fixed-menu" id="top-menu">
+                    <div id="right-menu">
+                        <ul class="row menu-list">
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="aussen.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Außen</h2>
+                                </a>
                             </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="foyer.html">Foyer</a>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="foyer.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Foyer</h2>
                             </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="grosser-saal.html">Großer-Saal</a>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="grosser-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Großer Saal</h2>
                             </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="mozart-saal.html">Mozart-Saal</a>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="mozart-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Mozart Saal</h2>
                             </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="schubert-saal.html">Schubert-Saal</a>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="schubert-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Schubert Saal</h2>
+                                </a>
                             </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Klavier-Saal</a>
-                            </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pausenbuffet</a>
-                            </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Backstage</a>
-                            </li>
-                            <span class="main-menu-divider">.</span>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Über das Projekt</a>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="berio-saal">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Berio Saal</h2>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -132,10 +141,10 @@
                             <svg class="landscape" width="100%" height="100%" viewBox="0 0 1842 1212">
                                 <defs>
                                     <style>
-                             
+
                                     </style>
                                 </defs>
-                                <image width="1842" height="1212"
+                                <image width="100%" height="100%"
                                     xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg">
                                 </image>
                                 <a xlink:href="drone-video.html" class="li-modal">
@@ -315,6 +324,33 @@
             $('html,body').animate({
                 scrollTop: el.offset().top - el.height() / 2
             }, 500);
+        }
+
+        /* animate right menu on button click */
+        function toggleNavbarRight(event) {
+            el = $('#top-menu');
+            divHeight = el.height();
+            position = el.position();
+            buttonWidth =$('#navbar-right-toggler').width()
+            width = el.width();
+            documentWidth = $(document).width();
+            console.log('Div height: ' + divHeight);
+            console.log('Position - left: ' + position.left + ' top: ' + position.top);
+            console.log('element Width: ' + width);
+            console.log('Button width: ' + buttonWidth);
+            console.log('documentWidth: ' + documentWidth);
+
+            if (position.left < documentWidth) {
+                el.animate({
+                    duration: 500,
+                    right: - width
+                });
+            } else {
+                el.animate({
+                    duration: 500,
+                    right: 0
+                });
+            }
         }
     </script>
 </body>
