@@ -1,0 +1,175 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Circular Pro Book', Arial, sans-serif;
+}
+
+/* Main menu styling */
+#main-menu {
+  text-transform: uppercase;
+}
+.fixed-menu {
+  background-color: white;
+}
+
+/* video container 16:9 responsive */
+.videoWrapper {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  width: 100%;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-top {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+}
+
+#navbar-right-toggler {
+  margin: 10px;
+}
+
+.menu-item {
+  margin-bottom: 1.5rem;
+}
+/* Mobile menu visible only on mobile, use bootsrap medium break-point  */
+@media (max-width: 768px) {
+  #portrait-menu {
+    display: block;
+  }
+  #bottom-menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 11;
+  }
+  /* hide top menu */
+  #top-menu {
+    display: none;
+  }
+  /* hide menu button */
+  #navbar-right-toggler {
+    display: none;
+  }
+
+  .content {
+    margin-top: 10px;
+    padding-top: 62px;
+  }
+
+  /* change background image to portrait */
+  svg.landscape {
+    display: none;
+  }
+  svg.portrait {
+    display: flex;
+  }
+
+  /* Mobile version of circle full opacity */
+  circle {
+    opacity: 0.5;
+  }
+}
+
+/* Destop version in widescreen, use bootstrap medium breakpoint */
+@media (min-width: 769px) {
+  #bottom-menu {
+    display: none;
+  }
+  #top-menu {
+    position: fixed;
+    top: 62px;
+    right: -100%;
+    z-index: 12;
+    max-width: 385px;
+  }
+
+  /* show menu button */
+  #navbar-right-toggler {
+    display: block;
+  }
+}
+
+/* change background to landscape (widescreen) */
+svg.landscape {
+  display: flex;
+}
+svg.portrait {
+  display: none;
+}
+
+/* svc element circle styling */
+circle {
+  opacity: 0.2;
+}
+
+circle:hover {
+  opacity: 0.8;
+}
+
+#right-menu {
+  margin-top: 30px;
+}
+
+#bottom-menu {
+  height: 80px;
+}
+#mobile-nav-toggle {
+  border: none;
+  background-color: rgba(#f9cac7 0.4);
+  font-size: 2rem;
+}
+
+#main-menu a a:link a:visited a:hover {
+  color: black;
+}
+#main-menu a:hover {
+  text-decoration: underline;
+}
+#main-menu h2 {
+  font-size: 1rem;
+  color: black;
+}
+
+/* Footer */
+footer {
+  background-color: #f9cbc8;
+}
+footer p a {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.scroll-image {
+  position: absolute;
+  top: 80%;
+  left: 45%;
+}
+
+/* circle image in menu */
+ul {
+  list-style: none;
+}
+.image-circle {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
