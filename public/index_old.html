@@ -1,5 +1,7 @@
+<!-- Link to definitions: https://xd.adobe.com/view/591b0642-431f-4c6f-9ec6-0dedaf4204ba-0c48/screen/a0eb298d-add6-4781-aa40-dbae624cf940 -->
+
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,16 +16,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/showModal.js"></script>
   </head>
+
   <body>
-    <noscript>
-      <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
-        properly without JavaScript enabled. Please enable it to
-        continue.</strong
-      >
-    </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <!-- Wrap the content in a fluid container here -->
+    <div class="container-fluid px-0"></div>
     <script>
       /* find modal content from external file */
       $('.li-modal').on('click', function(event) {
@@ -115,6 +112,7 @@
       }
     </script>
   </body>
+
   <!-- Popper JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
