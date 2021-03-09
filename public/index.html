@@ -9,10 +9,10 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="/public/css/style.css" />
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/showModal.js"></script>
+    <script src="/public/js/showModal.js"></script>
   </head>
   <body>
     <noscript>
@@ -23,97 +23,6 @@
       >
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <script>
-      /* find modal content from external file */
-      $('.li-modal').on('click', function(event) {
-        event.preventDefault();
-        $('#modalContainer')
-          .modal('show')
-          .find('.modal-content')
-          .load($(this).attr('xlink:href'));
-      });
-
-      /* add class visited to main menu */
-      $('.nav-item').on('click', function(event) {
-        item = $('#main-menu option:selected');
-        $('#main-menu')
-          .find('.nav-item')
-          .removeClass('active');
-        item.addClass('active');
-      });
-
-      /* stop youtube from playing after dismiss */
-      $('#modalContainer').on('hidden.bs.modal', function(e) {
-        $('#modalContainer iframe').attr(
-          'src',
-          $('#modalContainer iframe').attr('src'),
-        );
-      });
-
-      /* show - hide mobile menu */
-      $('#mobile-nav-toggle').on('click', function(event) {
-        el = $('#bottom-menu');
-        buttonName = $('#mobile-nav-toggle');
-        divHeight = el.height();
-        position = el.position();
-        offset = el.offset();
-        menuHeight = $('#portrait-menu').height();
-        if (divHeight <= 80) {
-          el.animate({
-            duration: 500,
-            height: menuHeight,
-          });
-          buttonName.text(' X Räume X');
-        } else {
-          el.animate({
-            duration: 500,
-            height: 80,
-          });
-          buttonName.text(' - Räume -');
-        }
-      });
-
-      /* scroll to element */
-      function scrollToElement(classID) {
-        el = $('#' + classID);
-        $('html,body').animate(
-          {
-            scrollTop: el.offset().top - el.height() / 2,
-          },
-          500,
-        );
-      }
-
-      /* animate right menu on button click */
-      function toggleNavbarRight(event) {
-        el = $('#top-menu');
-        divHeight = el.height();
-        position = el.position();
-        buttonWidth = $('#navbar-right-toggler').width();
-        width = el.width();
-        documentWidth = $(document).width();
-        console.log('Div height: ' + divHeight);
-        console.log(
-          'Position - left: ' + position.left + ' top: ' + position.top,
-        );
-        console.log('element Width: ' + width);
-        console.log('Button width: ' + buttonWidth);
-        console.log('documentWidth: ' + documentWidth);
-
-        if (position.left < documentWidth) {
-          el.animate({
-            duration: 500,
-            right: -width,
-          });
-        } else {
-          el.animate({
-            duration: 500,
-            right: 0,
-          });
-        }
-      }
-    </script>
   </body>
   <!-- Popper JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

@@ -1,144 +1,364 @@
-<!-- main container -->
-<div class="content">
-  <div class="row mx-0">
-      <div class="col-md-12 px-0">
-          <div class="image">
-              <figure id="imagemap">
-                  <svg class="landscape" width="100%" height="100%" viewBox="0 0 1842 1212">
-                      <defs>
-                          <style>
+<!-- Link to definitions: https://xd.adobe.com/view/591b0642-431f-4c6f-9ec6-0dedaf4204ba-0c48/screen/a0eb298d-add6-4781-aa40-dbae624cf940 -->
 
-                          </style>
-                      </defs>
-                      <image width="100%" height="100%"
-                          xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg">
-                      </image>
-                      <a xlink:href="drone-video.html" class="li-modal">
-                          <circle cx="300" cy="200" r="75" opacity="0" fill="none" stroke="red"
-                              stroke-width="20" />
-                          <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
-                      </a>
-                      <a xlink:href="entrance.html" class="li-modal">
-                          <circle cx="800" cy="600" r="75" opacity="0" fill="none" stroke="red"
-                              stroke-width="20" />
-                          <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
-                      </a>
-                      <a xlink:href="#videos">
-                          <circle cx="1100" cy="1200" r="75" opacity="0" fill="none" stroke="red"
-                              stroke-width="20" />
-                          <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
-                      </a>
-                  </svg>
-                  <svg class="portrait" width="100%" height="100%" viewBox="0 0 371 590">
-                      <image width="371" height="590"
-                          xlink:href="../assets/img/wkh_entdecken_fotoauswahl-2.jpg">
-                      </image>
-                      <a xlink:href="drone-video.html" class="li-modal">
-                          <circle cx="100" cy="100" r="15" opacity="0" fill="none" stroke="red"
-                              stroke-width="5" />
-                          <circle cx="100" cy="100" r="10" opacity="0" fill="red" stroke="red"
-                              stroke-width="0" />
-                      </a>
-                      <a xlink:href="entrance.html" class="li-modal">
-                          <circle cx="200" cy="300" r="15" opacity="0" fill="none" stroke="red"
-                              stroke-width="5" />
-                          <circle cx="200" cy="300" r="10" opacity="0" fill="red" stroke="red"
-                              stroke-width="0" />
-                      </a>
-                      <circle cx="300" cy="500" r="15" opacity="0" fill="none" stroke="red"
-                          stroke-width="5" />
-                      <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red" stroke-width="0"
-                          onclick="scrollToElement('videos')" />
-                  </svg>
-              </figure>
-              <div class="scroll-image">
-                  <img class="center-block" src="../img/btn-desktop-scroll-down.png"
-                      onclick="scrollToElement('videos')">
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="container pt-5">
-      <div id="videos">
-          <div class="row">
-              <h1>Videos</h1>
-          </div>
-          <div class="row">
-              <div class="col-md-5 ml-0">
-                  <div class="row">
-                      <div class="videoWrapper">
-                          <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                              frameborder="0"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                      </div>
-                  </div>
-                  <div class="row">
-                      Erzählungen vom Haus
-                  </div>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="col-md-5 ml-0">
-                  <div class="row">
-                      <div class="videoWrapper">
-                          <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                              frameborder="0"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowfullscreen></iframe>
-                      </div>
-                  </div>
-                  <div class="row">
-                      Drohnen Video
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Modal container drone video -->
-<div class="modal fade" id="modalContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content"></div>
-</div>
-</div>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiener Konzerthaus | Erleben</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/showModal.js"></script>
+</head>
 
-<footer>
-<div class="container pt-5 px-0">
-  <p>Wiener Konzerthaus <br>
-      Lothringerstraße 20 <br>
-      A-1030 Wien</p>
+<body>
+    <!-- Wrap the content in a fluid container here -->
+    <div class="container-fluid px-0">
 
-  <p>Telefon: +43 1 242002 <br>
-      Telefax: +43 1 24200-110 <br>
-      ticket@konzerthaus.at</p>
+        <!-- main nav bar fixed top-->
+        <div class="row logo-top">
+            <div class="col-11">
+                <a class="" href="#"><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"></a>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-light float-right" type="button" id="navbar-right-toggler" onclick="toggleNavbarRight()">Räume</button>
+            </div>
+        </div>
+
+        <nav id="main-menu">
+            <div class="" style="margin-top: 62px;">
+            </div>
+            <div class="row">
+                <div class="fixed-menu" id="top-menu">
+                    <div id="right-menu">
+                        <ul class="row menu-list">
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="aussen.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Außen</h2>
+                                </a>
+                            </li>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="foyer.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Foyer</h2>
+                            </li>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="grosser-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Großer Saal</h2>
+                            </li>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="mozart-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Mozart Saal</h2>
+                            </li>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="schubert-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Schubert Saal</h2>
+                                </a>
+                            </li>
+                            <li class="menu-item text-center col-sm-6">
+                                <a href="berio-saal">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg" alt=""
+                                        class="image-circle ">
+                                    <h2>Berio Saal</h2>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="fixed-menu" id="bottom-menu">
+                    <div id="portrait-menu">
+                        <div class="row">
+                            <div class="col-12 pt-4 pb-4 text-center">
+                                <button id="mobile-nav-toggle" class="" type="button">- Räume -</button>
+                            </div>
+                        </div>
+                        <ul class="row text-center menu-list">
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="aussen.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Außen</h2>
+                                </a>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="foyer.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Foyer</h2>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="grosser-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Großer Saal</h2>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="mozart-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Mozart Saal</h2>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="schubert-saal.html">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Schubert Saal</h2>
+                                </a>
+                            </li>
+                            <li class="menu-item col-sm-4 col-6">
+                                <a href="berio-saal">
+                                    <img src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg" alt=""
+                                        class="image-circle">
+                                    <h2>Berio Saal</h2>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- main container -->
+        <div class="content">
+            <div class="row mx-0">
+                <div class="col-md-12 px-0">
+                    <div class="image">
+                        <figure id="imagemap">
+                            <svg class="landscape" width="100%" height="100%" viewBox="0 0 1842 1212">
+                                <defs>
+                                    <style>
+
+                                    </style>
+                                </defs>
+                                <image width="100%" height="100%"
+                                    xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg">
+                                </image>
+                                <a xlink:href="drone-video.html" class="li-modal">
+                                    <circle cx="300" cy="200" r="75" opacity="0" fill="none" stroke="red"
+                                        stroke-width="20" />
+                                    <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
+                                </a>
+                                <a xlink:href="entrance.html" class="li-modal">
+                                    <circle cx="800" cy="600" r="75" opacity="0" fill="none" stroke="red"
+                                        stroke-width="20" />
+                                    <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
+                                </a>
+                                <a xlink:href="#videos">
+                                    <circle cx="1100" cy="1200" r="75" opacity="0" fill="none" stroke="red"
+                                        stroke-width="20" />
+                                    <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
+                                </a>
+                            </svg>
+                            <svg class="portrait" width="100%" height="100%" viewBox="0 0 371 590">
+                                <image width="371" height="590"
+                                    xlink:href="../assets/img/wkh_entdecken_fotoauswahl-2.jpg">
+                                </image>
+                                <a xlink:href="drone-video.html" class="li-modal">
+                                    <circle cx="100" cy="100" r="15" opacity="0" fill="none" stroke="red"
+                                        stroke-width="5" />
+                                    <circle cx="100" cy="100" r="10" opacity="0" fill="red" stroke="red"
+                                        stroke-width="0" />
+                                </a>
+                                <a xlink:href="entrance.html" class="li-modal">
+                                    <circle cx="200" cy="300" r="15" opacity="0" fill="none" stroke="red"
+                                        stroke-width="5" />
+                                    <circle cx="200" cy="300" r="10" opacity="0" fill="red" stroke="red"
+                                        stroke-width="0" />
+                                </a>
+                                <circle cx="300" cy="500" r="15" opacity="0" fill="none" stroke="red"
+                                    stroke-width="5" />
+                                <circle cx="300" cy="500" r="10" opacity="0" fill="red" stroke="red" stroke-width="0"
+                                    onclick="scrollToElement('videos')" />
+                            </svg>
+                        </figure>
+                        <div class="scroll-image">
+                            <img class="center-block" src="../img/btn-desktop-scroll-down.png"
+                                onclick="scrollToElement('videos')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-5">
+                <div id="videos">
+                    <div class="row">
+                        <h1>Videos</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 ml-0">
+                            <div class="row">
+                                <div class="videoWrapper">
+                                    <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="row">
+                                Erzählungen vom Haus
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5 ml-0">
+                            <div class="row">
+                                <div class="videoWrapper">
+                                    <iframe width="360px" height="auto" src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="row">
+                                Drohnen Video
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal container drone video -->
+    <div class="modal fade" id="modalContainer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="container pt-5 px-0">
+            <p>Wiener Konzerthaus <br>
+                Lothringerstraße 20 <br>
+                A-1030 Wien</p>
+
+            <p>Telefon: +43 1 242002 <br>
+                Telefax: +43 1 24200-110 <br>
+                ticket@konzerthaus.at</p>
 
 
-  <p>Ticket- & Service-Center <br>
-      Das Ticket- & Service ist derzeit geschlossen. <br>
-      Weitere Informationen finden Sie hier. <br>
-      Telefonzeiten <br>
-      Montag bis Freitag 10.00–14.00 Uhr <br>
-  </p>
-  <p>
-      Kartenkäufe und <br> Abonnementbestellungen sind <br> online jederzeit möglich.
-  </p>
-  <p>Das Wiener Konzerthaus dankt <br> all seinen Sponsoren und <br> Kooperationspartnern</p>
+            <p>Ticket- & Service-Center <br>
+                Das Ticket- & Service ist derzeit geschlossen. <br>
+                Weitere Informationen finden Sie hier. <br>
+                Telefonzeiten <br>
+                Montag bis Freitag 10.00–14.00 Uhr <br>
+            </p>
+            <p>
+                Kartenkäufe und <br> Abonnementbestellungen sind <br> online jederzeit möglich.
+            </p>
+            <p>Das Wiener Konzerthaus dankt <br> all seinen Sponsoren und <br> Kooperationspartnern</p>
 
 
-  <p>Generalpartner seit 1992</p>
+            <p>Generalpartner seit 1992</p>
 
-  <p>Logo der Firma Kapsch</p>
+            <p>Logo der Firma Kapsch</p>
 
 
-  <p>Premium Sponsoren</p>
+            <p>Premium Sponsoren</p>
 
-  <p>Logo der Firma Wiener Städtische <br> Versicherungsverein Logo der Firma Wiener Städtische <br> Vienna
-      Insurance Group</p>
-  <a href="#">Impressum</a><br>
-  <a href="#">Datenschutzerklärung</a><br>
-  <a href="#">Allgemeine Verkaufs- und Abonnementbedingungen</a><br>
-</div>
-</footer>
+            <p>Logo der Firma Wiener Städtische <br> Versicherungsverein Logo der Firma Wiener Städtische <br> Vienna
+                Insurance Group</p>
+            <a href="#">Impressum</a><br>
+            <a href="#">Datenschutzerklärung</a><br>
+            <a href="#">Allgemeine Verkaufs- und Abonnementbedingungen</a><br>
+        </div>
+    </footer>
+    <script>
+        /* find modal content from external file */
+        $('.li-modal').on('click', function (event) {
+            event.preventDefault();
+            $('#modalContainer').modal('show').find('.modal-content').load($(this).attr('xlink:href'));
+        });
+
+        /* add class visited to main menu */
+        $('.nav-item').on('click', function (event) {
+            item = $('#main-menu option:selected');
+            $('#main-menu').find('.nav-item').removeClass('active');
+            item.addClass('active');
+        });
+
+        /* stop youtube from playing after dismiss */
+        $("#modalContainer").on('hidden.bs.modal', function (e) {
+            $("#modalContainer iframe").attr("src", $("#modalContainer iframe").attr("src"));
+        });
+
+        /* show - hide mobile menu */
+        $("#mobile-nav-toggle").on('click', function (event) {
+            el = $('#bottom-menu');
+            buttonName = $('#mobile-nav-toggle');
+            divHeight = el.height();
+            position = el.position();
+            offset = el.offset();
+            menuHeight = $('#portrait-menu').height();
+            if (divHeight <= 80) {
+                el.animate({
+                    duration: 500,
+                    height: menuHeight
+                });
+                buttonName.text(' X Räume X');
+            } else {
+                el.animate({
+                    duration: 500,
+                    height: 80
+                });
+                buttonName.text(' - Räume -');
+            }
+        });
+
+        /* scroll to element */
+        function scrollToElement(classID) {
+            el = $('#' + classID);
+            $('html,body').animate({
+                scrollTop: el.offset().top - el.height() / 2
+            }, 500);
+        }
+
+        /* animate right menu on button click */
+        function toggleNavbarRight(event) {
+            el = $('#top-menu');
+            divHeight = el.height();
+            position = el.position();
+            buttonWidth =$('#navbar-right-toggler').width()
+            width = el.width();
+            documentWidth = $(document).width();
+            console.log('Div height: ' + divHeight);
+            console.log('Position - left: ' + position.left + ' top: ' + position.top);
+            console.log('element Width: ' + width);
+            console.log('Button width: ' + buttonWidth);
+            console.log('documentWidth: ' + documentWidth);
+
+            if (position.left < documentWidth) {
+                el.animate({
+                    duration: 500,
+                    right: - width
+                });
+            } else {
+                el.animate({
+                    duration: 500,
+                    right: 0
+                });
+            }
+        }
+    </script>
+</body>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>
