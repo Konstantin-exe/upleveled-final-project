@@ -12,7 +12,7 @@
           class="btn btn-light float-right"
           type="button"
           id="navbar-right-toggler"
-          @click="toggleNavbarRight()"
+          @click="toggleNavbarRight"
         >
           Räume
         </button>
@@ -90,7 +90,11 @@
           <div id="portrait-menu">
             <div class="row">
               <div class="col-12 pt-4 pb-4 text-center">
-                <button id="mobile-nav-toggle" class="" type="button">
+                <button
+                  id="mobile-nav-toggle"
+                  @click="toggleNavbarBottom"
+                  type="button"
+                >
                   - Räume -
                 </button>
               </div>
@@ -194,6 +198,30 @@ export default {
           right: 0,
         });
       }
+    },
+    /* show - hide mobile menu */
+    toggleNavbarBottom() {
+      $('#mobile-nav-toggle').on('click', function() {
+        const el = $('#bottom-menu');
+        const buttonName = $('#mobile-nav-toggle');
+        const divHeight = el.height();
+        // const position = el.position();
+        // const offset = el.offset();
+        const menuHeight = $('#portrait-menu').height();
+        if (divHeight <= 80) {
+          el.animate({
+            duration: 500,
+            height: menuHeight,
+          });
+          buttonName.text(' X Räume X');
+        } else {
+          el.animate({
+            duration: 500,
+            height: 80,
+          });
+          buttonName.text(' - Räume -');
+        }
+      });
     },
   },
 };

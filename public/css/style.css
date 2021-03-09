@@ -87,7 +87,7 @@ body {
   }
 }
 
-/* Destop version in widescreen, use bootstrap medium breakpoint */
+/* Destkop version in widescreen, use bootstrap medium breakpoint */
 @media (min-width: 769px) {
   #bottom-menu {
     display: none;

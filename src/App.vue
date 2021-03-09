@@ -8,4 +8,7 @@
 
 <style>
 @import '../public/css/style.css';
+.container-fluid {
+  width: 100%;
+}
 </style>
