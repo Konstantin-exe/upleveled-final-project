@@ -6,6 +6,17 @@
         <div class="image">
           <!-- <figure id="imagemap"> -->
           <Lightbox />
+          <div
+            class="modal fade"
+            id="modalContainer"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content" />
+            </div>
+          </div>
           <svg
             class="landscape"
             width="100%"
@@ -287,45 +298,4 @@ export default {
 };
 </script>
 
-<style>
-/* Mobile menu visible only on mobile, use bootsrap medium break-point  */
-@media (max-width: 768px) {
-  #portrait-menu {
-    display: block;
-  }
-  #bottom-menu {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 11;
-  }
-  /* hide top menu */
-  #top-menu {
-    display: none;
-  }
-  /* hide menu button */
-  #navbar-right-toggler {
-    display: none;
-  }
-
-  .content {
-    margin-top: 10px;
-    padding-top: 62px;
-  }
-
-  /* change background image to portrait */
-
-  svg.landscape {
-    display: none;
-  }
-  svg.portrait {
-    display: flex;
-  }
-
-  /* Mobile version of circle full opacity */
-  circle {
-    opacity: 0.5;
-  }
-}
-</style>
+<style></style>
