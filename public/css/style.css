@@ -47,45 +47,6 @@ body {
 .menu-item {
   margin-bottom: 1.5rem;
 }
-/* Mobile menu visible only on mobile, use bootsrap medium break-point  */
-@media (max-width: 768px) {
-  #portrait-menu {
-    display: block;
-  }
-  #bottom-menu {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 11;
-  }
-  /* hide top menu */
-  #top-menu {
-    display: none;
-  }
-  /* hide menu button */
-  #navbar-right-toggler {
-    display: none;
-  }
-
-  .content {
-    margin-top: 10px;
-    padding-top: 62px;
-  }
-
-  /* change background image to portrait */
-  svg.landscape {
-    display: none;
-  }
-  svg.portrait {
-    display: flex;
-  }
-
-  /* Mobile version of circle full opacity */
-  circle {
-    opacity: 0.5;
-  }
-}
 
 /* Destkop version in widescreen, use bootstrap medium breakpoint */
 @media (min-width: 769px) {

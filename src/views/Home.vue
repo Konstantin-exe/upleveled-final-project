@@ -1,8 +1,10 @@
 <template>
   <div class="home">
-    <Header />
-    <Main />
-    <Footer />
+    <div class="container-fluid px-0">
+      <Header />
+      <Main />
+      <Footer />
+    </div>
   </div>
 </template>
 
