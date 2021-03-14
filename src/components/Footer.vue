@@ -51,8 +51,23 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: 'Footer',
 };
 </script>
 
-<style></style>
+<style>
+/* Footer */
+footer {
+  background-color: #f9cbc8;
+}
+footer p a {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.scroll-image {
+  position: absolute;
+  top: 80%;
+  left: 45%;
+}
+</style>

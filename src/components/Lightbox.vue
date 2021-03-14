@@ -1,5 +1,16 @@
 <template>
   <teleport name="modal-teleport">
+    <div
+      class="modal fade"
+      id="modalContainer"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content" />
+      </div>
+    </div>
     <modal name="modal-circle" class="modal-header">
       <h4 class="modal-title" id="myModalLabel">Drohnen-Video</h4>
       <button
@@ -55,25 +66,29 @@
 
 <script>
 import $ from 'jquery';
-import 'bootstrap';
+
 export default {
   name: 'Lightbox',
-  methods: {},
-
-  findModalExternal() {
-    $('.li-modal').on('click', function(event) {
-      event.preventDefault();
-      $('#modalContainer')
-        .modal('show')
-        .find('.modal-content')
-        .load($(this).attr('xlink:href'));
-    });
+  methods: {
+    findModalExternal() {
+      $('.li-modal').on('click', function(event) {
+        event.preventDefault();
+        $('#modalContainer')
+          .modal('show')
+          .find('.modal-content')
+          .load($(this).attr('xlink:href'));
+      });
+    },
   },
 };
 </script>
 
 <style>
-/* video container 16:9 responsive */
+.model-dialog {
+  width: 500px;
+}
+
+/* vieo container 16:9 responsive */
 .videoWrapper {
   overflow: hidden;
   position: relative;
@@ -87,5 +102,12 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.modal-body {
+  position: relative;
+  overflow-y: auto;
+  min-height: 600px;
+  padding: 15px;
 }
 </style>

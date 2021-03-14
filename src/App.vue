@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <div class=".container-fluid">
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 
 <style>
-@import '../public/css/style.css';
+@import '../src/assets/css/style.css';
 </style>

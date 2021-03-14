@@ -6,84 +6,8 @@
         <div class="image">
           <!-- <figure id="imagemap"> -->
           <Lightbox />
-          <div
-            class="modal fade"
-            id="modalContainer"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="myModalLabel"
-          >
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content" />
-            </div>
-          </div>
-          <svg
-            class="landscape"
-            width="100%"
-            height="100%"
-            viewBox="0 0 1842 1212"
-          >
-            <!-- <defs>
-                <style></style>
-              </defs> -->
-            <image
-              width="100%"
-              height="100%"
-              xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
-            />
-            <a
-              @click="show"
-              class="li-modal"
-              click="findModalExternal"
-              name="circle-1"
-            >
-              <circle
-                cx="300"
-                cy="200"
-                r="75"
-                opacity="0"
-                fill="none"
-                stroke="red"
-                stroke-width="20"
-              />
-              <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
-            </a>
-            <a
-              @click="show"
-              class="li-modal"
-              click="findModalExternal"
-              name="circle-2"
-            >
-              <circle
-                cx="800"
-                cy="600"
-                r="75"
-                opacity="0"
-                fill="none"
-                stroke="red"
-                stroke-width="20"
-              />
-              <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
-            </a>
 
-            <a
-              @click="show"
-              class="li-modal"
-              click="findModalExternal"
-              name="circle-3"
-            >
-              <circle
-                cx="1100"
-                cy="1200"
-                r="75"
-                opacity="0"
-                fill="none"
-                stroke="red"
-                stroke-width="20"
-              />
-              <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
-            </a>
-          </svg>
+          <!-- mobile view -->
           <svg
             class="portrait"
             width="100%"
@@ -156,6 +80,75 @@
               onclick="scrollToElement('videos')"
             />
           </svg>
+          <!-- web view -->
+          <svg
+            class="landscape"
+            width="100%"
+            height="100%"
+            viewBox="0 0 1842 1212"
+          >
+            <!-- <defs>
+                <style></style>
+              </defs> -->
+            <image
+              width="100%"
+              height="100%"
+              xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
+            />
+            <a
+              @click="show"
+              class="li-modal"
+              click="findModalExternal"
+              name="circle-1"
+            >
+              <circle
+                cx="300"
+                cy="200"
+                r="75"
+                opacity="0"
+                fill="none"
+                stroke="red"
+                stroke-width="20"
+              />
+              <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
+            </a>
+            <a
+              @click="show"
+              class="li-modal"
+              click="findModalExternal"
+              name="circle-2"
+            >
+              <circle
+                cx="800"
+                cy="600"
+                r="75"
+                opacity="0"
+                fill="none"
+                stroke="red"
+                stroke-width="20"
+              />
+              <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
+            </a>
+
+            <a
+              @click="show"
+              class="li-modal"
+              click="findModalExternal"
+              name="circle-3"
+            >
+              <circle
+                cx="1100"
+                cy="1200"
+                r="75"
+                opacity="0"
+                fill="none"
+                stroke="red"
+                stroke-width="20"
+              />
+              <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
+            </a>
+          </svg>
+
           <!-- </figure> -->
           <div class="scroll-image">
             <img
@@ -221,13 +214,16 @@ export default {
   components: { Lightbox },
   name: 'Main',
   data() {},
+
   methods: {
     show() {
       this.$modal.show('modal-circle');
+      $('#myModal').modal('handleUpdate');
     },
     hide() {
       this.$modal.hide('modal-circle');
     },
+
     /* find modal content from external file */
     findModalExternal() {
       $('.li-modal').on('click', function(event) {
@@ -240,29 +236,29 @@ export default {
     },
 
     /* show - hide mobile menu */
-    // showHideMobileMenu() {
-    //   $('#mobile-nav-toggle').on('click', function() {
-    //     const el = $('#bottom-menu');
-    //     const buttonName = $('#mobile-nav-toggle');
-    //     const divHeight = el.height();
-    //     // const position = el.position();
-    //     // const offset = el.offset();
-    //     const menuHeight = $('#portrait-menu').height();
-    //     if (divHeight <= 80) {
-    //       el.animate({
-    //         duration: 500,
-    //         height: menuHeight,
-    //       });
-    //       buttonName.text(' X Räume X');
-    //     } else {
-    //       el.animate({
-    //         duration: 500,
-    //         height: 80,
-    //       });
-    //       buttonName.text(' - Räume -');
-    //     }
-    //   });
-    // },
+    showHideMobileMenu() {
+      $('#mobile-nav-toggle').on('click', function() {
+        const el = $('#bottom-menu');
+        const buttonName = $('#mobile-nav-toggle');
+        const divHeight = el.height();
+        // const position = el.position();
+        // const offset = el.offset();
+        const menuHeight = $('#portrait-menu').height();
+        if (divHeight <= 80) {
+          el.animate({
+            duration: 500,
+            height: menuHeight,
+          });
+          buttonName.text(' X Räume X');
+        } else {
+          el.animate({
+            duration: 500,
+            height: 80,
+          });
+          buttonName.text(' - Räume -');
+        }
+      });
+    },
 
     /* add class visited to main menu */
     classVisited() {
@@ -298,4 +294,147 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+/* Main menu styling */
+#main-menu {
+  text-transform: uppercase;
+}
+.fixed-menu {
+  background-color: white;
+}
+/* Mobile menu visible only on mobile, use bootsrap medium break-point  */
+@media (max-width: 768px) {
+  #portrait-menu {
+    display: block;
+  }
+  #bottom-menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 11;
+  }
+  /* hide top menu */
+  #top-menu {
+    display: none;
+  }
+  /* hide menu button */
+  #navbar-right-toggler {
+    display: none;
+  }
+
+  .content {
+    margin-top: 10px;
+    padding-top: 62px;
+  }
+
+  /* change background image to portrait */
+
+  svg.portrait {
+    display: flex;
+  }
+  svg.landscape {
+    display: none;
+  }
+
+  /* Mobile version of circle full opacity */
+  circle {
+    opacity: 0.5;
+  }
+}
+
+/* Destkop version in widescreen, use bootstrap medium breakpoint */
+@media (min-width: 769px) {
+  #bottom-menu {
+    display: none;
+  }
+  #top-menu {
+    position: fixed;
+    top: 62px;
+    right: -100%;
+    z-index: 12;
+    max-width: 385px;
+  }
+
+  /* show menu button */
+  #navbar-right-toggler {
+    display: block;
+  }
+}
+
+/* change background to landscape (widescreen) */
+svg.portrait {
+  display: none;
+}
+svg.landscape {
+  display: flex;
+}
+
+/* svc element circle styling */
+circle {
+  opacity: 0.2;
+}
+
+circle:hover {
+  opacity: 0.8;
+}
+
+#right-menu {
+  margin-top: 30px;
+}
+
+#bottom-menu {
+  height: 80px;
+}
+#mobile-nav-toggle {
+  border: none;
+  background-color: rgba(#f9cac7 0.4);
+  font-size: 2rem;
+}
+
+#main-menu a a:link a:visited a:hover {
+  color: black;
+}
+#main-menu a:hover {
+  text-decoration: underline;
+}
+#main-menu h2 {
+  font-size: 1rem;
+  color: black;
+}
+
+/* video container 16:9 responsive */
+.videoWrapper {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  width: 100%;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-top {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+}
+
+#navbar-right-toggler {
+  margin: 10px;
+}
+
+.menu-item {
+  margin-bottom: 1.5rem;
+}
+</style>
