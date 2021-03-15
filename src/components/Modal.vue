@@ -15,6 +15,7 @@
               <div class=" col-md embed-responsive embed-responsive-16by9">
                 <!-- youtube embedd-->
                 <iframe
+                  id="modal-video"
                   class="embed - responsive - item"
                   src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -23,6 +24,7 @@
               </div>
               <div class="col-sm">
                 <!-- Text aligned rigt -->
+                <h4>Video Titel</h4>
                 <p>
                   Weit hinten, hinter den Wortbergen, fern der Länder Vokalien
                   und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie
@@ -52,6 +54,17 @@ export default {
   methods: {
     close() {
       this.$emit('input', !this.value);
+    },
+    stopVideo(element) {
+      const iframe = element.querySelector('iframe');
+      const video = element.querySelector('video');
+      if (iframe !== null) {
+        const iframeSrc = iframe.src;
+        iframe.src = iframeSrc;
+      }
+      if (video !== null) {
+        video.pause();
+      }
     },
   },
 };
