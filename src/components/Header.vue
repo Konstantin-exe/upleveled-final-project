@@ -175,6 +175,7 @@ export default {
   //     window.addEventListener('toggleNavBarBottom', this.toggleNavbarBottom);
   // },
   methods: {
+    // delete this:
     /* animate right menu on button click */
     toggleNavbarRight() {
       const el = $('#top-menu');
