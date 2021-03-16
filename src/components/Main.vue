@@ -1,6 +1,6 @@
 <template>
   <!-- main container -->
-  <div class="content">
+  <div class="content ">
     <div class="row mx-0">
       <div class="col-md-12 px-0">
         <div class="image">
@@ -150,14 +150,14 @@
             <img
               class="center-block"
               src="/img/btn-desktop-scroll-down.png"
-              @click="scrollToElement('videos')"
+              @click="goto('videos')"
             />
           </div>
         </div>
       </div>
     </div>
     <div class="container pt-5">
-      <div id="videos">
+      <div ref="videos">
         <div class="row">
           <h1>Videos</h1>
         </div>
@@ -204,8 +204,7 @@
 </template>
 
 <script>
-import $ from 'jquery';
-// import Lightbox from './Lightbox.vue';
+// import $ from 'jquery';
 import Modal from './Modal.vue';
 export default {
   components: { Modal },
@@ -219,80 +218,34 @@ export default {
     openModal() {
       this.modalOpen = !this.modalOpen;
     },
-    // show() {
-    //   this.$modal.show('modal-circle');
-    //   $('#myModal').modal('handleUpdate');
-    // },
-    // hide() {
-    //   this.$modal.hide('modal-circle');
-    // },
+
+    goto(ref) {
+      const element = this.$refs[ref];
+      const top = element.offsetTop;
+      window.scrollTo(0, top);
+    },
 
     /* find modal content from external file */
-    findModalExternal() {
-      $('.li-modal').on('click', function(event) {
-        event.preventDefault();
-        $('#modalContainer')
-          .modal('show')
-          .find('.modal-content')
-          .load($(this).attr('xlink:href'));
-      });
-    },
-
-    /* show - hide mobile menu */
-    showHideMobileMenu() {
-      $('#mobile-nav-toggle').on('click', function() {
-        const el = $('#bottom-menu');
-        const buttonName = $('#mobile-nav-toggle');
-        const divHeight = el.height();
-        // const position = el.position();
-        // const offset = el.offset();
-        const menuHeight = $('#portrait-menu').height();
-        if (divHeight <= 80) {
-          el.animate({
-            duration: 500,
-            height: menuHeight,
-          });
-          buttonName.text(' X Räume X');
-        } else {
-          el.animate({
-            duration: 500,
-            height: 80,
-          });
-          buttonName.text(' - Räume -');
-        }
-      });
-    },
+    // findModalExternal() {
+    //   $('.li-modal').on('click', function(event) {
+    //     event.preventDefault();
+    //     $('#modalContainer')
+    //       .modal('show')
+    //       .find('.modal-content')
+    //       .load($(this).attr('xlink:href'));
+    //   });
+    // },
 
     /* add class visited to main menu */
-    classVisited() {
-      $('.nav-item').on('click', function() {
-        const item = $('#main-menu option:selected');
-        $('#main-menu')
-          .find('.nav-item')
-          .removeClass('active');
-        item.addClass('active');
-      });
-    },
-
-    scrollToElement(classID) {
-      const el = $('#' + classID);
-      $('html,body').animate(
-        {
-          scrollTop: el.offset().top - el.height() / 2,
-        },
-        500,
-      );
-    },
-
-    // /* stop youtube from playing after dismiss */
-    stopVideoAfterDismiss() {
-      $('#modalContainer').on('hidden.bs.modal', function() {
-        $('#modalContainer iframe').attr(
-          'src',
-          $('#modalContainer iframe').attr('src'),
-        );
-      });
-    },
+    // classVisited() {
+    //   $('.nav-item').on('click', function() {
+    //     const item = $('#main-menu option:selected');
+    //     $('#main-menu')
+    //       .find('.nav-item')
+    //       .removeClass('active');
+    //     item.addClass('active');
+    //   });
+    // },
   },
 };
 </script>
@@ -439,5 +392,17 @@ circle:hover {
 
 .menu-item {
   margin-bottom: 1.5rem;
+}
+
+/* Scroll Item */
+.scroll-image:hover {
+  transform: translateY(-8px) rotate(0deg);
+  transition: all 0.1s ease-in-out;
+  opacity: 1;
+}
+
+.scroll-image {
+  transition: all 0.1s ease-in-out;
+  opacity: 0.8;
 }
 </style>

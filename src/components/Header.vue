@@ -170,10 +170,10 @@ import $ from 'jquery';
 export default {
   name: 'Header',
   data() {},
-  created() {
-    window.addEventListener('toggleNavBarRight', this.toggleNavbarRight),
-      window.addEventListener('toggleNavBarBottom', this.toggleNavbarBottom);
-  },
+  // created() {
+  //   window.addEventListener('toggleNavBarRight', this.toggleNavbarRight),
+  //     window.addEventListener('toggleNavBarBottom', this.toggleNavbarBottom);
+  // },
   methods: {
     /* animate right menu on button click */
     toggleNavbarRight() {

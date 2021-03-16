@@ -15,6 +15,7 @@
               <div class=" col-md embed-responsive embed-responsive-16by9">
                 <!-- youtube embedd-->
                 <iframe
+                  v-if="this.value"
                   id="modal-video"
                   class="embed - responsive - item"
                   src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
@@ -54,17 +55,6 @@ export default {
   methods: {
     close() {
       this.$emit('input', !this.value);
-    },
-    stopVideo(element) {
-      const iframe = element.querySelector('iframe');
-      const video = element.querySelector('video');
-      if (iframe !== null) {
-        const iframeSrc = iframe.src;
-        iframe.src = iframeSrc;
-      }
-      if (video !== null) {
-        video.pause();
-      }
     },
   },
 };
