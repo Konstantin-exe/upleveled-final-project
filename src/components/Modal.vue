@@ -5,15 +5,15 @@
         <div class="modal-container">
           <div class="modal-header">
             <h4 class="modal-title">Drohnen-Video</h4>
-            <button type="button" @click="close">
-              Close
+            <button type="button" class="btn btn-outline-dark" @click="close">
+              Schließen
             </button>
           </div>
 
           <div class="modal-body ">
             <div class="row container">
               <div class=" col-md embed-responsive embed-responsive-16by9">
-                <!-- youtube embedd-->
+                <!-- youtube embeded-->
                 <iframe
                   v-if="this.value"
                   id="modal-video"

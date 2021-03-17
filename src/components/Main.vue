@@ -1,151 +1,153 @@
 <template>
   <!-- main container -->
-  <div class="content ">
+  <div class="content">
     <div class="row mx-0">
       <div class="col-md-12 px-0">
         <div class="image">
-          <!-- <figure id="imagemap"> -->
+          <figure id="imagemap">
+            <!-- modal -->
+            <modal v-model="modalOpen"></modal>
 
-          <!-- modal -->
-          <modal v-model="modalOpen"></modal>
+            <!-- mobile view -->
+            <div class="portrait">
+              <svg width="100%" height="100%" viewBox="0 0 371 590">
+                <image
+                  width="371"
+                  height="590"
+                  src="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
+                />
+                <a @click="openModal" click="findModalExternal">
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="15"
+                    opacity="0"
+                    fill="none"
+                    stroke="red"
+                    stroke-width="5"
+                  />
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="10"
+                    opacity="0"
+                    fill="red"
+                    stroke="red"
+                    stroke-width="0"
+                  />
+                </a>
 
-          <!-- mobile view -->
-          <div class="portrait">
-            <svg width="100%" height="100%" viewBox="0 0 371 590">
-              <image
-                width="371"
-                height="590"
-                xlink:href="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
-              />
-              <a @click="openModal" click="findModalExternal">
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="15"
-                  opacity="0"
-                  fill="none"
-                  stroke="red"
-                  stroke-width="5"
-                />
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="10"
-                  opacity="0"
-                  fill="red"
-                  stroke="red"
-                  stroke-width="0"
-                />
-              </a>
-
-              <a @click="openModal" class="li-modal" click="findModalExternal">
-                <circle
-                  cx="200"
-                  cy="300"
-                  r="15"
-                  opacity="0"
-                  fill="none"
-                  stroke="red"
-                  stroke-width="5"
-                />
-                <circle
-                  cx="200"
-                  cy="300"
-                  r="10"
-                  opacity="0"
-                  fill="red"
-                  stroke="red"
-                  stroke-width="0"
-                />
-              </a>
-              <circle
-                cx="300"
-                cy="500"
-                r="15"
-                opacity="0"
-                fill="none"
-                stroke="red"
-                stroke-width="5"
-              />
-              <circle
-                cx="300"
-                cy="500"
-                r="10"
-                opacity="0"
-                fill="red"
-                stroke="red"
-                stroke-width="0"
-                onclick="scrollToElement('videos')"
-              />
-            </svg>
-          </div>
-          <!-- web view -->
-          <div class="landscape">
-            <svg width="100%" height="100%" viewBox="0 0 1842 1212">
-              <!-- <defs>
-                <style></style>
-              </defs> -->
-              <image
-                width="100%"
-                height="100%"
-                xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
-              />
-              <a
-                @click="openModal"
-                class="li-modal"
-                click="findModalExternal"
-                name="circle-1"
-              >
+                <a
+                  @click="openModal"
+                  class="li-modal"
+                  click="findModalExternal"
+                >
+                  <circle
+                    cx="200"
+                    cy="300"
+                    r="15"
+                    opacity="0"
+                    fill="none"
+                    stroke="red"
+                    stroke-width="5"
+                  />
+                  <circle
+                    cx="200"
+                    cy="300"
+                    r="10"
+                    opacity="0"
+                    fill="red"
+                    stroke="red"
+                    stroke-width="0"
+                  />
+                </a>
                 <circle
                   cx="300"
-                  cy="200"
-                  r="75"
+                  cy="500"
+                  r="15"
                   opacity="0"
                   fill="none"
                   stroke="red"
-                  stroke-width="20"
+                  stroke-width="5"
                 />
-                <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
-              </a>
-              <a
-                @click="openModal"
-                class="li-modal"
-                click="findModalExternal"
-                name="circle-2"
-              >
                 <circle
-                  cx="800"
-                  cy="600"
-                  r="75"
+                  cx="300"
+                  cy="500"
+                  r="10"
                   opacity="0"
-                  fill="none"
+                  fill="red"
                   stroke="red"
-                  stroke-width="20"
+                  stroke-width="0"
+                  onclick="scrollToElement('videos')"
                 />
-                <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
-              </a>
-
-              <a
-                @click="openModal"
-                class="li-modal"
-                click="findModalExternal"
-                name="circle-3"
-              >
-                <circle
-                  cx="1100"
-                  cy="1200"
-                  r="75"
-                  opacity="0"
-                  fill="none"
-                  stroke="red"
-                  stroke-width="20"
+              </svg>
+            </div>
+            <!-- web view -->
+            <div class="landscape">
+              <svg width="100%" height="100%" viewBox="0 0 1842 1212">
+                <!-- <defs>
+                <style></style>
+              </defs> -->
+                <image
+                  width="100%"
+                  height="100%"
+                  xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
                 />
-                <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
-              </a>
-            </svg>
-          </div>
+                <a
+                  @click="openModal"
+                  class="li-modal"
+                  click="findModalExternal"
+                  name="circle-1"
+                >
+                  <circle
+                    cx="300"
+                    cy="200"
+                    r="75"
+                    opacity="0"
+                    fill="none"
+                    stroke="red"
+                    stroke-width="20"
+                  />
+                  <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
+                </a>
+                <a
+                  @click="openModal"
+                  class="li-modal"
+                  click="findModalExternal"
+                  name="circle-2"
+                >
+                  <circle
+                    cx="800"
+                    cy="600"
+                    r="75"
+                    opacity="0"
+                    fill="none"
+                    stroke="red"
+                    stroke-width="20"
+                  />
+                  <circle cx="800" cy="600" r="50" opacity="0" fill="red" />
+                </a>
 
-          <!-- </figure> -->
+                <a
+                  @click="openModal"
+                  class="li-modal"
+                  click="findModalExternal"
+                  name="circle-3"
+                >
+                  <circle
+                    cx="1100"
+                    cy="1200"
+                    r="75"
+                    opacity="0"
+                    fill="none"
+                    stroke="red"
+                    stroke-width="20"
+                  />
+                  <circle cx="1100" cy="1200" r="50" opacity="0" fill="red" />
+                </a>
+              </svg>
+            </div>
+          </figure>
           <div class="scroll-image">
             <img
               class="center-block"
@@ -196,6 +198,13 @@
             <div class="row">
               Drohnen Video
             </div>
+            <button
+              v-if="dataFromPagesApi && dataFromPagesApi[0]"
+              type="button"
+              class="btn btn-outline-dark"
+            >
+              {{ dataFromPagesApi[0].id }}
+            </button>
           </div>
         </div>
       </div>
@@ -204,7 +213,7 @@
 </template>
 
 <script>
-// import $ from 'jquery';
+// import axios from 'axios';
 import Modal from './Modal.vue';
 export default {
   components: { Modal },
@@ -224,28 +233,18 @@ export default {
       const top = element.offsetTop;
       window.scrollTo(0, top);
     },
-
-    /* find modal content from external file */
-    // findModalExternal() {
-    //   $('.li-modal').on('click', function(event) {
-    //     event.preventDefault();
-    //     $('#modalContainer')
-    //       .modal('show')
-    //       .find('.modal-content')
-    //       .load($(this).attr('xlink:href'));
-    //   });
-    // },
-
-    /* add class visited to main menu */
-    // classVisited() {
-    //   $('.nav-item').on('click', function() {
-    //     const item = $('#main-menu option:selected');
-    //     $('#main-menu')
-    //       .find('.nav-item')
-    //       .removeClass('active');
-    //     item.addClass('active');
-    //   });
-    // },
+  },
+  computed: {
+    dataFromPagesApi() {
+      return this.$store.state.dataFromPagesApi;
+    },
+    dataFromMediaApi() {
+      return this.$store.state.dataFromMediaApi;
+    },
+  },
+  created() {
+    this.$store.dispatch('fetchDataFromPagesApi');
+    this.$store.dispatch('fetchDataFromMediaApi');
   },
 };
 </script>
