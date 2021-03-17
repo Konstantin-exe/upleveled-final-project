@@ -9,14 +9,14 @@
       </div>
       <div class="col-1">
         <button
-          @click="openNav"
+          @click="toggleNavbarRight"
           class="btn btn-outline-dark float-right"
           type="button"
           id="navbar-right-toggler"
         >
           Räume
         </button>
-        <nav id="main-menu" v-if="navOpen">
+        <nav id="main-menu">
           <div class="" style="margin-top: 62px;"></div>
           <div class="row">
             <div class="fixed-menu" id="top-menu">
@@ -169,12 +169,12 @@
 </template>
 
 <script>
-import $ from "jquery";
+import $ from 'jquery';
 export default {
-  name: "Header",
+  name: 'Header',
   data() {
     return {
-      navOpen: false
+      navOpen: false,
     };
   },
   // created() {
@@ -186,58 +186,58 @@ export default {
       this.navOpen = !this.navOpen;
     },
     /* animate right menu on button click */
-    // toggleNavbarRight() {
-    //   const el = $('#top-menu');
-    //   const divHeight = el.height();
-    //   const position = el.position();
-    //   const buttonWidth = $('#navbar-right-toggler').width();
-    //   const width = el.width();
-    //   const documentWidth = $(document).width();
-    //   console.log('Div height: ' + divHeight);
-    //   console.log(
-    //     'Position - left: ' + position.left + ' top: ' + position.top,
-    //   );
-    //   console.log('element Width: ' + width);
-    //   console.log('Button width: ' + buttonWidth);
-    //   console.log('documentWidth: ' + documentWidth);
+    toggleNavbarRight() {
+      const el = $('#top-menu');
+      const divHeight = el.height();
+      const position = el.position();
+      const buttonWidth = $('#navbar-right-toggler').width();
+      const width = el.width();
+      const documentWidth = $(document).width();
+      console.log('Div height: ' + divHeight);
+      console.log(
+        'Position - left: ' + position.left + ' top: ' + position.top,
+      );
+      console.log('element Width: ' + width);
+      console.log('Button width: ' + buttonWidth);
+      console.log('documentWidth: ' + documentWidth);
 
-    //   if (position.left < documentWidth) {
-    //     el.animate({
-    //       duration: 500,
-    //       right: -width,
-    //     });
-    //   } else {
-    //     el.animate({
-    //       duration: 500,
-    //       right: 0,
-    //     });
-    //   }
-    // },
+      if (position.left < documentWidth) {
+        el.animate({
+          duration: 500,
+          right: -width,
+        });
+      } else {
+        el.animate({
+          duration: 500,
+          right: 0,
+        });
+      }
+    },
     /* show - hide mobile menu */
     toggleNavbarBottom() {
-      $("#mobile-nav-toggle").on("click", function() {
-        const el = $("#bottom-menu");
-        const buttonName = $("#mobile-nav-toggle");
+      $('#mobile-nav-toggle').on('click', function() {
+        const el = $('#bottom-menu');
+        const buttonName = $('#mobile-nav-toggle');
         const divHeight = el.height();
         // const position = el.position();
         // const offset = el.offset();
-        const menuHeight = $("#portrait-menu").height();
+        const menuHeight = $('#portrait-menu').height();
         if (divHeight <= 80) {
           el.animate({
             duration: 500,
-            height: menuHeight
+            height: menuHeight,
           });
-          buttonName.text(" X Räume X");
+          buttonName.text(' X Räume X');
         } else {
           el.animate({
             duration: 500,
-            height: 80
+            height: 80,
           });
-          buttonName.text(" - Räume -");
+          buttonName.text(' - Räume -');
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
