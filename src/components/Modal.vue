@@ -13,7 +13,7 @@
           <div class="modal-body ">
             <div class="row container">
               <div class=" col-md embed-responsive embed-responsive-16by9">
-                <!-- youtube embedd-->
+                <!-- youtube embeded-->
                 <iframe
                   v-if="this.value"
                   id="modal-video"

@@ -14,7 +14,6 @@ import Main from '../components/Main';
 
 export default {
   name: 'Home',
-  data() {},
   components: {
     Header,
     Main,

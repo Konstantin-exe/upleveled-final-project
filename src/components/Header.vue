@@ -169,12 +169,12 @@
 </template>
 
 <script>
-import $ from 'jquery';
+import $ from "jquery";
 export default {
-  name: 'Header',
+  name: "Header",
   data() {
     return {
-      navOpen: false,
+      navOpen: false
     };
   },
   // created() {
@@ -215,29 +215,29 @@ export default {
     // },
     /* show - hide mobile menu */
     toggleNavbarBottom() {
-      $('#mobile-nav-toggle').on('click', function() {
-        const el = $('#bottom-menu');
-        const buttonName = $('#mobile-nav-toggle');
+      $("#mobile-nav-toggle").on("click", function() {
+        const el = $("#bottom-menu");
+        const buttonName = $("#mobile-nav-toggle");
         const divHeight = el.height();
         // const position = el.position();
         // const offset = el.offset();
-        const menuHeight = $('#portrait-menu').height();
+        const menuHeight = $("#portrait-menu").height();
         if (divHeight <= 80) {
           el.animate({
             duration: 500,
-            height: menuHeight,
+            height: menuHeight
           });
-          buttonName.text(' X Räume X');
+          buttonName.text(" X Räume X");
         } else {
           el.animate({
             duration: 500,
-            height: 80,
+            height: 80
           });
-          buttonName.text(' - Räume -');
+          buttonName.text(" - Räume -");
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

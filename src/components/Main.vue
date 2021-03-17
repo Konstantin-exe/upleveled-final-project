@@ -14,7 +14,7 @@
                 <image
                   width="371"
                   height="590"
-                  xlink:href="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
+                  src="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
                 />
                 <a @click="openModal" click="findModalExternal">
                   <circle
@@ -198,6 +198,9 @@
             <div class="row">
               Drohnen Video
             </div>
+            <button type="button" class="btn btn-outline-dark">
+              {{ allDataFromPages[0].id }}
+            </button>
           </div>
         </div>
       </div>
@@ -206,7 +209,7 @@
 </template>
 
 <script>
-// import $ from 'jquery';
+// import axios from 'axios';
 import Modal from './Modal.vue';
 export default {
   components: { Modal },
@@ -226,28 +229,14 @@ export default {
       const top = element.offsetTop;
       window.scrollTo(0, top);
     },
-
-    /* find modal content from external file */
-    // findModalExternal() {
-    //   $('.li-modal').on('click', function(event) {
-    //     event.preventDefault();
-    //     $('#modalContainer')
-    //       .modal('show')
-    //       .find('.modal-content')
-    //       .load($(this).attr('xlink:href'));
-    //   });
-    // },
-
-    /* add class visited to main menu */
-    // classVisited() {
-    //   $('.nav-item').on('click', function() {
-    //     const item = $('#main-menu option:selected');
-    //     $('#main-menu')
-    //       .find('.nav-item')
-    //       .removeClass('active');
-    //     item.addClass('active');
-    //   });
-    // },
+  },
+  computed: {
+    allDataFromPages() {
+      return this.$store.state.allDataFromPages;
+    },
+  },
+  created() {
+    this.$store.dispatch('getAllDataFromPages');
   },
 };
 </script>
