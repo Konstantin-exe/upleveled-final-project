@@ -198,8 +198,12 @@
             <div class="row">
               Drohnen Video
             </div>
-            <button type="button" class="btn btn-outline-dark">
-              {{ allDataFromPages[0].id }}
+            <button
+              v-if="dataFromPagesApi && dataFromPagesApi[0]"
+              type="button"
+              class="btn btn-outline-dark"
+            >
+              {{ dataFromPagesApi[0].id }}
             </button>
           </div>
         </div>
@@ -231,12 +235,16 @@ export default {
     },
   },
   computed: {
-    allDataFromPages() {
-      return this.$store.state.allDataFromPages;
+    dataFromPagesApi() {
+      return this.$store.state.dataFromPagesApi;
+    },
+    dataFromMediaApi() {
+      return this.$store.state.dataFromMediaApi;
     },
   },
   created() {
-    this.$store.dispatch('getAllDataFromPages');
+    this.$store.dispatch('fetchDataFromPagesApi');
+    this.$store.dispatch('fetchDataFromMediaApi');
   },
 };
 </script>

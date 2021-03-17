@@ -6,19 +6,33 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    allDataFromPages: [],
+    dataFromPagesApi: [],
+    dataFromMediaApi: [],
   },
   mutations: {
     SET_PAGES(state, data) {
-      state.allDataFromPages = data;
+      state.dataFromPagesApi = data;
+    },
+    SET_MEDIA(state, data) {
+      state.dataFromMediaApi = data;
     },
   },
   actions: {
-    getAllDataFromPages({ commit }) {
+    fetchDataFromPagesApi({ commit }) {
       axios
         .get('https://entdecken.konzerthaus.at/c-control/wp-json/wp/v2/pages')
         .then((res) => {
           commit('SET_PAGES', res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    fetchDataFromMediaApi({ commit }) {
+      axios
+        .get('https://entdecken.konzerthaus.at/c-control/wp-json/wp/v2/media')
+        .then((res) => {
+          commit('SET_MEDIA', res.data);
         })
         .catch((err) => {
           console.log(err);
