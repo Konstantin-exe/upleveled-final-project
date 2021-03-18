@@ -6,7 +6,11 @@
         <div class="image">
           <figure id="imagemap">
             <!-- modal -->
-            <modal v-model="modalOpen"></modal>
+            <modal
+              :modalOpen="modalOpen"
+              :closeModal="closeModal"
+              :idFromPagesApi="idFromPagesApi"
+            ></modal>
 
             <!-- mobile view -->
             <div class="portrait">
@@ -94,7 +98,7 @@
                   xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
                 />
                 <a
-                  @click="openModal"
+                  @click="openModal(0)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-1"
@@ -111,7 +115,7 @@
                   <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                 </a>
                 <a
-                  @click="openModal"
+                  @click="openModal(1)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-2"
@@ -198,13 +202,6 @@
             <div class="row">
               Drohnen Video
             </div>
-            <button
-              v-if="dataFromPagesApi && dataFromPagesApi[0]"
-              type="button"
-              class="btn btn-outline-dark"
-            >
-              {{ dataFromPagesApi[0].id }}
-            </button>
           </div>
         </div>
       </div>
@@ -221,11 +218,13 @@ export default {
   data() {
     return {
       modalOpen: false,
+      idFromPagesApi: null,
     };
   },
   methods: {
-    openModal() {
+    openModal(id) {
       this.modalOpen = !this.modalOpen;
+      this.idFromPagesApi = id;
     },
 
     goto(ref) {
@@ -233,7 +232,11 @@ export default {
       const top = element.offsetTop;
       window.scrollTo(0, top);
     },
+    closeModal() {
+      this.modalOpen = false;
+    },
   },
+
   computed: {
     dataFromPagesApi() {
       return this.$store.state.dataFromPagesApi;
