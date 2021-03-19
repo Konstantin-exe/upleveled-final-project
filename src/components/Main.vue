@@ -93,10 +93,13 @@
                 <!-- <defs>
                 <style></style>
               </defs> -->
-                <image
+                <img
                   width="100%"
                   height="100%"
-                  xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
+                  alt=""
+                  xlink:href="
+                    https://entdecken.konzerthaus.at/c-control/wp-content/uploads/2021/03/wkh_entdecken_fotoauswahl-1-768x505.jpg
+                  "
                 />
                 <a
                   @click="openModal(12)"
@@ -221,9 +224,28 @@ export default {
       modalOpen: false,
       roomId: null,
       video: null,
+      desktopImg: null,
     };
   },
   methods: {
+    roomDesktopImg(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const desktopImgId = room.meta_box.room_details.room_background_desktop;
+      const desktopImg = this.dataFromMediaApi.find((content) => {
+        if (content.id === Number(desktopImgId)) {
+          return true;
+        }
+        return false;
+      });
+      console.log(desktopImg.media_details.sizes.medium_large.source_url);
+      this.desktopImg = desktopImg.media_details.sizes.medium_large.source_url;
+    },
+
     openModal(id) {
       const room = this.dataFromPagesApi.find((content) => {
         if (content.meta_box.content_type === 'room' && content.id === id) {
@@ -232,13 +254,11 @@ export default {
         return false;
       });
       const roomId = room.id;
-      console.log(roomId);
       const video = this.dataFromPagesApi.find((content) => {
         if (content.parent === roomId) {
           return true;
         }
       });
-      console.log(video);
       this.modalOpen = !this.modalOpen;
       this.roomId = id;
       this.video = video;
