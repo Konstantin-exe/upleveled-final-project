@@ -4,11 +4,8 @@
       <div class="modal-wrapper" @click.self="closeModal">
         <div class="modal-container">
           <div class="modal-header">
-            <h4
-              class="modal-title"
-              v-if="dataFromPagesApi && dataFromPagesApi[idFromPagesApi]"
-            >
-              {{ dataFromPagesApi[idFromPagesApi].title.rendered }}
+            <h4 class="modal-title" v-if="dataFromPagesApi">
+              {{ video.title.rendered }}
             </h4>
             <button
               type="button"
@@ -26,11 +23,8 @@
                 <iframe
                   v-if="modalOpen"
                   id="modal-video"
-                  class="embed - responsive - item"
-                  v-bind:src="
-                    dataFromPagesApi[idFromPagesApi].meta_box.video_details
-                      .video_iframe_url
-                  "
+                  class="embed-responsive-item"
+                  v-bind:src="video.meta_box.video_details.video_iframe_url"
                   allowfullscreen=""
                 ></iframe>
               </div>
@@ -38,7 +32,7 @@
                 <!-- Text aligned rigt -->
 
                 <p>
-                  {{ dataFromPagesApi[idFromPagesApi].content.rendered }}
+                  {{ video.content.rendered }}
                 </p>
               </div>
             </div>
@@ -57,10 +51,13 @@ export default {
     modalOpen: {
       required: true,
     },
-    idFromPagesApi: {
+    roomId: {
       required: true,
     },
     closeModal: {
+      required: true,
+    },
+    video: {
       required: true,
     },
   },

@@ -9,7 +9,8 @@
             <modal
               :modalOpen="modalOpen"
               :closeModal="closeModal"
-              :idFromPagesApi="idFromPagesApi"
+              :video="video"
+              :roomId="roomId"
             ></modal>
 
             <!-- mobile view -->
@@ -98,7 +99,7 @@
                   xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
                 />
                 <a
-                  @click="openModal(0)"
+                  @click="openModal(12)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-1"
@@ -115,7 +116,7 @@
                   <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                 </a>
                 <a
-                  @click="openModal(1)"
+                  @click="openModal(0)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-2"
@@ -133,7 +134,7 @@
                 </a>
 
                 <a
-                  @click="openModal"
+                  @click="openModal(2)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-3"
@@ -218,13 +219,29 @@ export default {
   data() {
     return {
       modalOpen: false,
-      idFromPagesApi: null,
+      roomId: null,
+      video: null,
     };
   },
   methods: {
     openModal(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const roomId = room.id;
+      console.log(roomId);
+      const video = this.dataFromPagesApi.find((content) => {
+        if (content.parent === roomId) {
+          return true;
+        }
+      });
+      console.log(video);
       this.modalOpen = !this.modalOpen;
-      this.idFromPagesApi = id;
+      this.roomId = id;
+      this.video = video;
     },
 
     goto(ref) {
