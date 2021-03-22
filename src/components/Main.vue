@@ -1,6 +1,9 @@
 <template>
   <!-- main container -->
-  <div class="content">
+  <div
+    class="content"
+    v-if="dataFromMediaApi.length > 0 && dataFromPagesApi.length > 0"
+  >
     <div class="row mx-0">
       <div class="col-md-12 px-0">
         <div class="image">
@@ -21,7 +24,7 @@
                   height="590"
                   src="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
                 />
-                <a @click="openModal" click="findModalExternal">
+                <a @click="openModal">
                   <circle
                     cx="100"
                     cy="100"
@@ -89,24 +92,23 @@
             </div>
             <!-- web view -->
             <div class="landscape">
-              <svg width="100%" height="100%" viewBox="0 0 1842 1212">
+              <img
+                width="100%"
+                height="100%"
+                alt=""
+                :src="roomDesktopImg(12)"
+              />
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1842 1212"
+                style=" position: absolute"
+              >
                 <!-- <defs>
                 <style></style>
               </defs> -->
-                <img
-                  width="100%"
-                  height="100%"
-                  alt=""
-                  xlink:href="
-                    https://entdecken.konzerthaus.at/c-control/wp-content/uploads/2021/03/wkh_entdecken_fotoauswahl-1-768x505.jpg
-                  "
-                />
-                <a
-                  @click="openModal(12)"
-                  class="li-modal"
-                  click="findModalExternal"
-                  name="circle-1"
-                >
+
+                <a @click="openModal(12)" class="li-modal" name="circle-1">
                   <circle
                     cx="300"
                     cy="200"
@@ -224,7 +226,7 @@ export default {
       modalOpen: false,
       roomId: null,
       video: null,
-      desktopImg: null,
+      desktopImg: '',
     };
   },
   methods: {
@@ -237,13 +239,12 @@ export default {
       });
       const desktopImgId = room.meta_box.room_details.room_background_desktop;
       const desktopImg = this.dataFromMediaApi.find((content) => {
-        if (content.id === Number(desktopImgId)) {
+        if (content.id == desktopImgId) {
           return true;
         }
         return false;
       });
-      console.log(desktopImg.media_details.sizes.medium_large.source_url);
-      this.desktopImg = desktopImg.media_details.sizes.medium_large.source_url;
+      return desktopImg.media_details.sizes.medium_large.source_url;
     },
 
     openModal(id) {
@@ -281,6 +282,15 @@ export default {
     dataFromMediaApi() {
       return this.$store.state.dataFromMediaApi;
     },
+    // videosInMain() {
+    //   const videos = this.dataFromMediaApi.filter((content) => {
+    //     if (content.meta_box.content_type === 'video') {
+    //       return true;
+    //     }
+    //     return false;
+    //   });
+    //   return videos;
+    // },
   },
   created() {
     this.$store.dispatch('fetchDataFromPagesApi');

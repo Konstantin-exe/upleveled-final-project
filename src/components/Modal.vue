@@ -1,10 +1,10 @@
 <template>
   <transition name="modal">
-    <div v-show="modalOpen" class="modal-mask">
+    <div v-show="modalOpen" class="modal-mask" v-if="video">
       <div class="modal-wrapper" @click.self="closeModal">
         <div class="modal-container">
           <div class="modal-header">
-            <h4 class="modal-title" v-if="dataFromPagesApi">
+            <h4 class="modal-title">
               {{ video.title.rendered }}
             </h4>
             <button
@@ -112,6 +112,7 @@ export default {
 
 .modal-container {
   width: 85%;
+
   margin: 40px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -122,7 +123,7 @@ export default {
 
 .modal-body {
   margin: 20px 0;
-  height: auto;
+  height: 50vh;
   overflow-y: scroll;
 }
 
