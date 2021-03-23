@@ -283,6 +283,11 @@ export default {
   created() {
     this.$store.dispatch('fetchDataFromPagesApi');
     this.$store.dispatch('fetchDataFromMediaApi');
+    // this.$route.path;
+    // const roomId = this.$route.params.roomId;
+    // const selectedRoom = this.dataFromPagesApi.find(
+    //   (room) => room.id === roomId,
+    // );
   },
 };
 </script>
