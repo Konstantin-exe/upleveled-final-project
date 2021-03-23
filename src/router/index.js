@@ -8,11 +8,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'außen',
-    alias: "/ausen",
+    name: 'Außen',
+    alias: '/ausen',
     component: Main,
   },
-  { path: '/:slug', component: Main },
+  { path: '/:id', name: 'Main', component: Main },
 ];
 
 const router = new VueRouter({

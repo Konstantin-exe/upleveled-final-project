@@ -172,6 +172,7 @@
     <div class="container">
       <div ref="videos">
         <h1>Videos</h1>
+        <!-- <h1>{{ showRoom.title.render }}</h1> -->
 
         <div class="row">
           <template class="col" v-for="v in videosInMain(12)">
@@ -207,6 +208,7 @@ export default {
       roomId: null,
       video: null,
       desktopImg: '',
+      showRoomId: this.$route.params.id,
     };
   },
   methods: {
@@ -279,15 +281,19 @@ export default {
     dataFromMediaApi() {
       return this.$store.state.dataFromMediaApi;
     },
+    showRoom() {
+      const test = this.dataFromPagesApi.find(
+        (content) =>
+          content.meta_box.content_type === 'room' &&
+          content.id === this.showRoomId,
+      );
+      console.log(test);
+      return test;
+    },
   },
   created() {
     this.$store.dispatch('fetchDataFromPagesApi');
     this.$store.dispatch('fetchDataFromMediaApi');
-    // this.$route.path;
-    // const roomId = this.$route.params.roomId;
-    // const selectedRoom = this.dataFromPagesApi.find(
-    //   (room) => room.id === roomId,
-    // );
   },
 };
 </script>

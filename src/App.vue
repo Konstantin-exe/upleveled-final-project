@@ -1,13 +1,13 @@
 <template>
-  <div id="app" class="home">
-     <Header />
+  <div id="app">
+    <Header />
     <router-view />
     <Footer />
   </div>
 </template>
 
 <style>
-@import "../src/assets/css/style.css";
+@import '../src/assets/css/style.css';
 </style>
 
 <script>
