@@ -168,47 +168,27 @@
         </div>
       </div>
     </div>
-    <div class="container pt-5">
+    <!-- Videos -->
+    <div class="container">
       <div ref="videos">
+        <h1>Videos</h1>
+
         <div class="row">
-          <h1>Videos</h1>
-        </div>
-        <div class="row">
-          <div class="col-md-5 ml-0">
-            <div class="row">
-              <div class="videoWrapper">
-                <iframe
-                  width="360px"
-                  height="auto"
-                  src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                />
+          <template class="col" v-for="v in videosInMain(12)">
+            <div class="videoWrapper" :key="v.id">
+              <iframe
+                width="auto"
+                height="auto"
+                :src="v.meta_box.video_details.video_iframe_url"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+              <div :key="v.name">
+                {{ v.title.rendered }}
               </div>
             </div>
-            <div class="row">
-              Erzählungen vom Haus
-            </div>
-          </div>
-          <div class="col-md-1" />
-          <div class="col-md-5 ml-0">
-            <div class="row">
-              <div class="videoWrapper">
-                <iframe
-                  width="360px"
-                  height="auto"
-                  src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                />
-              </div>
-            </div>
-            <div class="row">
-              Drohnen Video
-            </div>
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -246,6 +226,23 @@ export default {
       });
       return desktopImg.media_details.sizes.medium_large.source_url;
     },
+    videosInMain(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const roomId = room.id;
+      const videosInMain = this.dataFromPagesApi.filter((content) => {
+        if (content.parent == roomId) {
+          return true;
+        }
+        return false;
+      });
+
+      return videosInMain;
+    },
 
     openModal(id) {
       const room = this.dataFromPagesApi.find((content) => {
@@ -282,15 +279,6 @@ export default {
     dataFromMediaApi() {
       return this.$store.state.dataFromMediaApi;
     },
-    // videosInMain() {
-    //   const videos = this.dataFromMediaApi.filter((content) => {
-    //     if (content.meta_box.content_type === 'video') {
-    //       return true;
-    //     }
-    //     return false;
-    //   });
-    //   return videos;
-    // },
   },
   created() {
     this.$store.dispatch('fetchDataFromPagesApi');
@@ -408,20 +396,20 @@ circle:hover {
   color: black;
 }
 
+.row {
+}
 /* video container 16:9 responsive */
 .videoWrapper {
-  overflow: hidden;
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 5%;
 }
 
 .videoWrapper iframe {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; */
 }
 
 .logo-top {
