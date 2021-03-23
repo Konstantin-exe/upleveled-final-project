@@ -1,11 +1,17 @@
 <template>
   <transition name="modal">
-    <div v-show="value" class="modal-mask">
-      <div class="modal-wrapper" @click.self="close">
+    <div v-show="modalOpen" class="modal-mask" v-if="video">
+      <div class="modal-wrapper" @click.self="closeModal">
         <div class="modal-container">
           <div class="modal-header">
-            <h4 class="modal-title">Drohnen-Video</h4>
-            <button type="button" class="btn btn-outline-dark" @click="close">
+            <h4 class="modal-title">
+              {{ video.title.rendered }}
+            </h4>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              @click="closeModal"
+            >
               Schließen
             </button>
           </div>
@@ -15,25 +21,18 @@
               <div class=" col-md embed-responsive embed-responsive-16by9">
                 <!-- youtube embeded-->
                 <iframe
-                  v-if="this.value"
+                  v-if="modalOpen"
                   id="modal-video"
-                  class="embed - responsive - item"
-                  src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  class="embed-responsive-item"
+                  v-bind:src="video.meta_box.video_details.video_iframe_url"
                   allowfullscreen=""
                 ></iframe>
               </div>
               <div class="col-sm">
                 <!-- Text aligned rigt -->
-                <h4>Video Titel</h4>
+
                 <p>
-                  Weit hinten, hinter den Wortbergen, fern der Länder Vokalien
-                  und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie
-                  in Buchstabhausen an der Küste des Semantik, eines großen
-                  Sprachozeans. Ein kleines Bächlein namens Duden fließt durch
-                  ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist
-                  ein paradiesmatisches Land, in dem einem gebratene Satzteile
-                  in den Mund fliegen. Nicht einmal von der allmächtigen
+                  {{ video.content.rendered }}
                 </p>
               </div>
             </div>
@@ -47,15 +46,33 @@
 <script>
 export default {
   name: 'Modal',
+
   props: {
-    value: {
+    modalOpen: {
+      required: true,
+    },
+    roomId: {
+      required: true,
+    },
+    closeModal: {
+      required: true,
+    },
+    video: {
       required: true,
     },
   },
-  methods: {
-    close() {
-      this.$emit('input', !this.value);
+
+  computed: {
+    dataFromPagesApi() {
+      return this.$store.state.dataFromPagesApi;
     },
+    dataFromMediaApi() {
+      return this.$store.state.dataFromMediaApi;
+    },
+  },
+  created() {
+    this.$store.dispatch('fetchDataFromPagesApi');
+    this.$store.dispatch('fetchDataFromMediaApi');
   },
 };
 </script>
@@ -69,13 +86,13 @@ export default {
   width: 100%;
 }
 
-.videoWrapper iframe {
+/* .videoWrapper iframe {
   position: absolute;
   top: 100;
   left: 0;
   width: 100%;
   height: 100%;
-}
+} */
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -95,6 +112,7 @@ export default {
 
 .modal-container {
   width: 85%;
+
   margin: 40px auto;
   padding: 20px 30px;
   background-color: #fff;

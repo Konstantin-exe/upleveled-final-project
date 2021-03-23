@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header v-if="dataFromPagesApi.length > 0 && dataFromMediaApi.length > 0">
     <!-- main nav bar fixed top-->
     <div class="row logo-top">
       <div class="col-11">
@@ -22,61 +22,18 @@
             <div class="fixed-menu" id="top-menu">
               <div id="right-menu">
                 <ul class="row menu-list">
-                  <li class="menu-item text-center col-sm-6">
-                    <a href="../views/aussen.html" />
+                  <li
+                    class="menu-item text-center col-sm-6"
+                    v-for="room in roomsInNavBar"
+                    :key="room.id"
+                  >
+                    <a href="routing" />
                     <img
-                      src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
+                      :src="roomThumbnailImg(room.id)"
                       alt=""
                       class="image-circle "
                     />
-                    <h2>Außen</h2>
-                  </li>
-                  <li class="menu-item text-center col-sm-6">
-                    <a href="../views/foyer.html" />
-                    <img
-                      src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg"
-                      alt=""
-                      class="image-circle "
-                    />
-                    <h2>Foyer</h2>
-                  </li>
-                  <li class="menu-item text-center col-sm-6">
-                    <a href="../views/grosser-saal.html" />
-                    <img
-                      src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg"
-                      alt=""
-                      class="image-circle "
-                    />
-                    <h2>Großer Saal</h2>
-                  </li>
-                  <li class="menu-item text-center col-sm-6">
-                    <a href="../views/mozart-saal.html" />
-                    <img
-                      src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg"
-                      alt=""
-                      class="image-circle "
-                    />
-                    <h2>Mozart Saal</h2>
-                  </li>
-                  <li class="menu-item text-center col-sm-6">
-                    <a href="schubert-saal.html">
-                      <img
-                        src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg"
-                        alt=""
-                        class="image-circle "
-                      />
-                      <h2>Schubert Saal</h2>
-                    </a>
-                  </li>
-                  <li class="menu-item text-center col-sm-6">
-                    <a href="berio-saal">
-                      <img
-                        src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg"
-                        alt=""
-                        class="image-circle "
-                      />
-                      <h2>Berio Saal</h2>
-                    </a>
+                    <h2>{{ room.title.rendered }}</h2>
                   </li>
                 </ul>
               </div>
@@ -103,61 +60,19 @@
               </div>
             </div>
             <ul class="row text-center menu-list">
-              <li class="menu-item col-sm-4 col-6">
+              <li
+                class="menu-item col-sm-4 col-6"
+                v-for="room in roomsInNavBar"
+                :key="room.id"
+              >
                 <a href="aussen.html">
                   <img
-                    src="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
+                    :src="roomThumbnailImg(room.id)"
+                    :key="room.id"
                     alt=""
                     class="image-circle"
                   />
-                  <h2>Außen</h2>
-                </a>
-              </li>
-              <li class="menu-item col-sm-4 col-6">
-                <a href="@/views/foyer.html" />
-                <img
-                  src="../assets/img/wkh_entdecken_fotoauswahl-3.jpg"
-                  alt=""
-                  class="image-circle"
-                />
-                <h2>Foyer</h2>
-              </li>
-              <li class="menu-item col-sm-4 col-6">
-                <a href="@/views/grosser-saal.html" />
-                <img
-                  src="../assets/img/wkh_entdecken_fotoauswahl-5.jpg"
-                  alt=""
-                  class="image-circle"
-                />
-                <h2>Großer Saal</h2>
-              </li>
-              <li class="menu-item col-sm-4 col-6">
-                <a href="@/views/mozart-saal.html" />
-                <img
-                  src="../assets/img/wkh_entdecken_fotoauswahl-7.jpg"
-                  alt=""
-                  class="image-circle"
-                />
-                <h2>Mozart Saal</h2>
-              </li>
-              <li class="menu-item col-sm-4 col-6">
-                <a href="schubert-saal.html">
-                  <img
-                    src="../assets/img/wkh_entdecken_fotoauswahl-9.jpg"
-                    alt=""
-                    class="image-circle"
-                  />
-                  <h2>Schubert Saal</h2>
-                </a>
-              </li>
-              <li class="menu-item col-sm-4 col-6">
-                <a href="berio-saal">
-                  <img
-                    src="../assets/img/wkh_entdecken_fotoauswahl-11.jpg"
-                    alt=""
-                    class="image-circle"
-                  />
-                  <h2>Berio Saal</h2>
+                  <h2>{{ room.title.rendered }}</h2>
                 </a>
               </li>
             </ul>
@@ -184,6 +99,22 @@ export default {
   methods: {
     openNav() {
       this.navOpen = !this.navOpen;
+    },
+    roomThumbnailImg(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const desktopImgId = room.meta_box.room_details.room_background_desktop;
+      const desktopImg = this.dataFromMediaApi.find((content) => {
+        if (content.id == desktopImgId) {
+          return true;
+        }
+        return false;
+      });
+      return desktopImg.media_details.sizes.medium_large.source_url;
     },
     /* animate right menu on button click */
     toggleNavbarRight() {
@@ -237,6 +168,27 @@ export default {
         }
       });
     },
+  },
+  computed: {
+    dataFromPagesApi() {
+      return this.$store.state.dataFromPagesApi;
+    },
+    dataFromMediaApi() {
+      return this.$store.state.dataFromMediaApi;
+    },
+    roomsInNavBar() {
+      const rooms = this.dataFromPagesApi.filter((content) => {
+        if (content.meta_box.content_type === 'room') {
+          return true;
+        }
+        return false;
+      });
+      return rooms;
+    },
+  },
+  created() {
+    this.$store.dispatch('fetchDataFromPagesApi');
+    this.$store.dispatch('fetchDataFromMediaApi');
   },
 };
 </script>

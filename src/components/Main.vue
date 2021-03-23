@@ -1,12 +1,20 @@
 <template>
   <!-- main container -->
-  <div class="content">
+  <div
+    class="content"
+    v-if="dataFromMediaApi.length > 0 && dataFromPagesApi.length > 0"
+  >
     <div class="row mx-0">
       <div class="col-md-12 px-0">
         <div class="image">
           <figure id="imagemap">
             <!-- modal -->
-            <modal v-model="modalOpen"></modal>
+            <modal
+              :modalOpen="modalOpen"
+              :closeModal="closeModal"
+              :video="video"
+              :roomId="roomId"
+            ></modal>
 
             <!-- mobile view -->
             <div class="portrait">
@@ -16,7 +24,7 @@
                   height="590"
                   src="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
                 />
-                <a @click="openModal" click="findModalExternal">
+                <a @click="openModal">
                   <circle
                     cx="100"
                     cy="100"
@@ -84,21 +92,23 @@
             </div>
             <!-- web view -->
             <div class="landscape">
-              <svg width="100%" height="100%" viewBox="0 0 1842 1212">
+              <img
+                width="100%"
+                height="100%"
+                alt=""
+                :src="roomDesktopImg(12)"
+              />
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1842 1212"
+                style=" position: absolute"
+              >
                 <!-- <defs>
                 <style></style>
               </defs> -->
-                <image
-                  width="100%"
-                  height="100%"
-                  xlink:href="../assets/img/wkh_entdecken_fotoauswahl-1.jpg"
-                />
-                <a
-                  @click="openModal"
-                  class="li-modal"
-                  click="findModalExternal"
-                  name="circle-1"
-                >
+
+                <a @click="openModal(12)" class="li-modal" name="circle-1">
                   <circle
                     cx="300"
                     cy="200"
@@ -111,7 +121,7 @@
                   <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                 </a>
                 <a
-                  @click="openModal"
+                  @click="openModal(0)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-2"
@@ -129,7 +139,7 @@
                 </a>
 
                 <a
-                  @click="openModal"
+                  @click="openModal(2)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-3"
@@ -158,54 +168,27 @@
         </div>
       </div>
     </div>
-    <div class="container pt-5">
+    <!-- Videos -->
+    <div class="container">
       <div ref="videos">
+        <h1>Videos</h1>
+
         <div class="row">
-          <h1>Videos</h1>
-        </div>
-        <div class="row">
-          <div class="col-md-5 ml-0">
-            <div class="row">
-              <div class="videoWrapper">
-                <iframe
-                  width="360px"
-                  height="auto"
-                  src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                />
+          <template class="col" v-for="v in videosInMain(12)">
+            <div class="videoWrapper" :key="v.id">
+              <iframe
+                width="auto"
+                height="auto"
+                :src="v.meta_box.video_details.video_iframe_url"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
+              <div :key="v.name">
+                {{ v.title.rendered }}
               </div>
             </div>
-            <div class="row">
-              Erzählungen vom Haus
-            </div>
-          </div>
-          <div class="col-md-1" />
-          <div class="col-md-5 ml-0">
-            <div class="row">
-              <div class="videoWrapper">
-                <iframe
-                  width="360px"
-                  height="auto"
-                  src="https://www.youtube.com/embed/Hp_Eg8NMfT0"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                />
-              </div>
-            </div>
-            <div class="row">
-              Drohnen Video
-            </div>
-            <button
-              v-if="dataFromPagesApi && dataFromPagesApi[0]"
-              type="button"
-              class="btn btn-outline-dark"
-            >
-              {{ dataFromPagesApi[0].id }}
-            </button>
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -221,11 +204,62 @@ export default {
   data() {
     return {
       modalOpen: false,
+      roomId: null,
+      video: null,
+      desktopImg: '',
     };
   },
   methods: {
-    openModal() {
+    roomDesktopImg(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const desktopImgId = room.meta_box.room_details.room_background_desktop;
+      const desktopImg = this.dataFromMediaApi.find((content) => {
+        if (content.id == desktopImgId) {
+          return true;
+        }
+        return false;
+      });
+      return desktopImg.media_details.sizes.medium_large.source_url;
+    },
+    videosInMain(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const roomId = room.id;
+      const videosInMain = this.dataFromPagesApi.filter((content) => {
+        if (content.parent == roomId) {
+          return true;
+        }
+        return false;
+      });
+
+      return videosInMain;
+    },
+
+    openModal(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const roomId = room.id;
+      const video = this.dataFromPagesApi.find((content) => {
+        if (content.parent === roomId) {
+          return true;
+        }
+      });
       this.modalOpen = !this.modalOpen;
+      this.roomId = id;
+      this.video = video;
     },
 
     goto(ref) {
@@ -233,7 +267,11 @@ export default {
       const top = element.offsetTop;
       window.scrollTo(0, top);
     },
+    closeModal() {
+      this.modalOpen = false;
+    },
   },
+
   computed: {
     dataFromPagesApi() {
       return this.$store.state.dataFromPagesApi;
@@ -358,20 +396,20 @@ circle:hover {
   color: black;
 }
 
+.row {
+}
 /* video container 16:9 responsive */
 .videoWrapper {
-  overflow: hidden;
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 5%;
 }
 
 .videoWrapper iframe {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100%; */
 }
 
 .logo-top {
