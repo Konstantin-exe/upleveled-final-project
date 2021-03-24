@@ -8,11 +8,10 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Außen',
-    alias: '/ausen',
-    component: Main,
+    redirect: '/12',
   },
-  { path: '/:id', name: 'Main', component: Main },
+  { path: '/:id', component: Main },
+  { path: '/notFound(.*)', redirect: '/' },
 ];
 
 const router = new VueRouter({

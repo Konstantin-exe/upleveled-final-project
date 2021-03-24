@@ -27,7 +27,7 @@
                     v-for="room in roomsInNavBar"
                     :key="room.id"
                   >
-                    <router-link to="route">
+                    <router-link :to="`/${room.id}`">
                       <img
                         :src="roomThumbnailImg(room.id)"
                         alt=""
@@ -66,7 +66,7 @@
                 v-for="room in roomsInNavBar"
                 :key="room.id"
               >
-                <a href="aussen.html">
+                <router-link :to="`/${room.id}`">
                   <img
                     :src="roomThumbnailImg(room.id)"
                     :key="room.id"
@@ -74,7 +74,7 @@
                     class="image-circle"
                   />
                   <h2>{{ room.title.rendered }}</h2>
-                </a>
+                </router-link>
               </li>
             </ul>
           </div>

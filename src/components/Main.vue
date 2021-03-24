@@ -22,9 +22,9 @@
                 <image
                   width="371"
                   height="590"
-                  src="../assets/img/wkh_entdecken_fotoauswahl-2.jpg"
+                  :src="roomMobileImg(parseInt(showRoomId))"
                 />
-                <a @click="openModal">
+                <a @click="openModal(parseInt(showRoomId))">
                   <circle
                     cx="100"
                     cy="100"
@@ -46,7 +46,7 @@
                 </a>
 
                 <a
-                  @click="openModal"
+                  @click="openModal(parseInt(showRoomId))"
                   class="li-modal"
                   click="findModalExternal"
                 >
@@ -96,7 +96,7 @@
                 width="100%"
                 height="100%"
                 alt=""
-                :src="roomDesktopImg(12)"
+                :src="roomDesktopImg(parseInt(showRoomId))"
               />
               <svg
                 width="100%"
@@ -108,7 +108,11 @@
                 <style></style>
               </defs> -->
 
-                <a @click="openModal(12)" class="li-modal" name="circle-1">
+                <a
+                  @click="openModal(parseInt(showRoomId))"
+                  class="li-modal"
+                  name="circle-1"
+                >
                   <circle
                     cx="300"
                     cy="200"
@@ -121,7 +125,7 @@
                   <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                 </a>
                 <a
-                  @click="openModal(0)"
+                  @click="openModal(parseInt(showRoomId))"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-2"
@@ -139,7 +143,7 @@
                 </a>
 
                 <a
-                  @click="openModal(2)"
+                  @click="openModal(parseInt(showRoomId))"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-3"
@@ -175,7 +179,7 @@
         <!-- <h1>{{ showRoom.title.render }}</h1> -->
 
         <div class="row">
-          <template class="col" v-for="v in videosInMain(12)">
+          <template class="col" v-for="v in videosInMain(parseInt(showRoomId))">
             <div class="videoWrapper" :key="v.id">
               <iframe
                 width="auto"
@@ -226,8 +230,28 @@ export default {
         }
         return false;
       });
-      return desktopImg.media_details.sizes.medium_large.source_url;
+
+      return desktopImg.media_details.sizes.full.source_url;
     },
+
+    roomMobileImg(id) {
+      const room = this.dataFromPagesApi.find((content) => {
+        if (content.meta_box.content_type === 'room' && content.id === id) {
+          return true;
+        }
+        return false;
+      });
+      const mobileImgId = room.meta_box.room_details.room_background_mobile;
+      const mobileImg = this.dataFromMediaApi.find((content) => {
+        if (content.id == mobileImgId) {
+          return true;
+        }
+        return false;
+      });
+
+      return mobileImg.media_details.sizes.full.source_url;
+    },
+
     videosInMain(id) {
       const room = this.dataFromPagesApi.find((content) => {
         if (content.meta_box.content_type === 'room' && content.id === id) {
@@ -280,15 +304,6 @@ export default {
     },
     dataFromMediaApi() {
       return this.$store.state.dataFromMediaApi;
-    },
-    showRoom() {
-      const test = this.dataFromPagesApi.find(
-        (content) =>
-          content.meta_box.content_type === 'room' &&
-          content.id === this.showRoomId,
-      );
-      console.log(test);
-      return test;
     },
   },
   created() {
