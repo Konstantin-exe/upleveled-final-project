@@ -10,7 +10,7 @@ const routes = [
     path: '/',
     redirect: '/12',
   },
-  { path: '/:id', component: Main },
+  { path: '/:slug', component: Main },
   { path: '/notFound(.*)', redirect: '/' },
 ];
 

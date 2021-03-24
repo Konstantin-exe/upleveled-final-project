@@ -27,7 +27,7 @@
                     v-for="room in roomsInNavBar"
                     :key="room.id"
                   >
-                    <router-link :to="`/${room.id}`">
+                    <router-link :to="`/${room.slug}`">
                       <img
                         :src="roomThumbnailImg(room.id)"
                         alt=""
@@ -66,7 +66,7 @@
                 v-for="room in roomsInNavBar"
                 :key="room.id"
               >
-                <router-link :to="`/${room.id}`">
+                <router-link :to="`/${room.slug}`">
                   <img
                     :src="roomThumbnailImg(room.id)"
                     :key="room.id"

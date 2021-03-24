@@ -17,14 +17,14 @@
             ></modal>
 
             <!-- mobile view -->
-            <div class="portrait">
+            <!-- <div class="portrait">
               <svg width="100%" height="100%" viewBox="0 0 371 590">
                 <image
                   width="371"
                   height="590"
-                  :src="roomMobileImg(parseInt(showRoomId))"
+                  :src="roomMobileImg(showRoomId)"
                 />
-                <a @click="openModal(parseInt(showRoomId))">
+                <a @click="openModal(showRoomId)">
                   <circle
                     cx="100"
                     cy="100"
@@ -46,7 +46,7 @@
                 </a>
 
                 <a
-                  @click="openModal(parseInt(showRoomId))"
+                  @click="openModal(showRoomId)"
                   class="li-modal"
                   click="findModalExternal"
                 >
@@ -89,14 +89,21 @@
                   onclick="scrollToElement('videos')"
                 />
               </svg>
-            </div>
+            </div> -->
             <!-- web view -->
             <div class="landscape">
               <img
+                class="desktop-room-image"
                 width="100%"
                 height="100%"
                 alt=""
-                :src="roomDesktopImg(parseInt(showRoomId))"
+                :src="roomDesktopImg(showRoomId)"
+              />
+              <img
+                class="mobile-room-image"
+                width="371"
+                height="590"
+                :src="roomMobileImg(showRoomId)"
               />
               <svg
                 width="100%"
@@ -104,12 +111,8 @@
                 viewBox="0 0 1842 1212"
                 style=" position: absolute"
               >
-                <!-- <defs>
-                <style></style>
-              </defs> -->
-
                 <a
-                  @click="openModal(parseInt(showRoomId))"
+                  @click="openModal(showRoomId)"
                   class="li-modal"
                   name="circle-1"
                 >
@@ -125,7 +128,7 @@
                   <circle cx="300" cy="200" r="50" opacity="0" fill="red" />
                 </a>
                 <a
-                  @click="openModal(parseInt(showRoomId))"
+                  @click="openModal(showRoomId)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-2"
@@ -143,7 +146,7 @@
                 </a>
 
                 <a
-                  @click="openModal(parseInt(showRoomId))"
+                  @click="openModal(showRoomId)"
                   class="li-modal"
                   click="findModalExternal"
                   name="circle-3"
@@ -179,7 +182,7 @@
         <!-- <h1>{{ showRoom.title.render }}</h1> -->
 
         <div class="row">
-          <template class="col" v-for="v in videosInMain(parseInt(showRoomId))">
+          <template class="col" v-for="v in videosInMain(showRoomId)">
             <div class="videoWrapper" :key="v.id">
               <iframe
                 width="auto"
@@ -212,7 +215,6 @@ export default {
       roomId: null,
       video: null,
       desktopImg: '',
-      showRoomId: this.$route.params.id,
     };
   },
   methods: {
@@ -305,6 +307,15 @@ export default {
     dataFromMediaApi() {
       return this.$store.state.dataFromMediaApi;
     },
+    showRoomId() {
+      const selectedRoom = this.dataFromPagesApi.find(
+        (content) => content.slug === this.$route.params.slug,
+      );
+      return selectedRoom.id;
+    },
+    // showRoomId() {
+    //   return
+    // }
   },
   created() {
     this.$store.dispatch('fetchDataFromPagesApi');
@@ -349,11 +360,11 @@ export default {
 
   /* change background image to portrait */
 
-  div.portrait {
-    display: flex;
-  }
-  div.landscape {
+  img.desktop-room-image {
     display: none;
+  }
+  img.mobile-room-image {
+    display: block;
   }
 
   /* Mobile version of circle full opacity */
@@ -364,6 +375,12 @@ export default {
 
 /* Destkop version in widescreen, use bootstrap medium breakpoint */
 @media (min-width: 769px) {
+  img.desktop-room-image {
+    display: block;
+  }
+  img.mobile-room-image {
+    display: none;
+  }
   #bottom-menu {
     display: none;
   }
@@ -379,14 +396,6 @@ export default {
   #navbar-right-toggler {
     display: block;
   }
-}
-
-/* change background to landscape (widescreen) */
-div.portrait {
-  display: none;
-}
-div.landscape {
-  display: flex;
 }
 
 /* svc element circle styling */
