@@ -3,11 +3,12 @@
     <!-- main nav bar fixed top-->
     <div class="row logo-top">
       <div class="col-11">
-        <a class="" href="#"
+        <a class="" href="/"
           ><img src="../assets/img/konzerthaus-logo.png" alt="Konzerthaus Logo"
         /></a>
       </div>
       <div class="col-1">
+        <button id="show-login">Login</button>
         <button
           @click="toggleNavbarRight"
           class="btn btn-outline-dark float-right"
@@ -86,6 +87,7 @@
 
 <script>
 import $ from 'jquery';
+
 export default {
   name: 'Header',
   data() {
@@ -101,6 +103,7 @@ export default {
     openNav() {
       this.navOpen = !this.navOpen;
     },
+
     roomThumbnailImg(id) {
       const room = this.dataFromPagesApi.find((content) => {
         if (content.meta_box.content_type === 'room' && content.id === id) {

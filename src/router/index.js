@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import Home from '../views/Home.vue';
+import UserAuth from '../pages/UserAuth.vue';
 import Main from '../components/Main.vue';
 
 Vue.use(VueRouter);
@@ -8,9 +8,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/12',
+    redirect: '/ausen',
   },
-  { path: '/:slug', component: Main },
+  {
+    path: '/:slug',
+    component: Main,
+  },
+  {
+    path: '/auth',
+    component: UserAuth,
+  },
   { path: '/notFound(.*)', redirect: '/' },
 ];
 

@@ -100,6 +100,7 @@
         </div>
       </div>
     </div>
+
     <!-- Videos -->
     <div class="container">
       <div ref="videos">
@@ -131,6 +132,7 @@
 <script>
 // import axios from 'axios';
 import Modal from './Modal.vue';
+
 export default {
   components: { Modal },
   name: 'Main',
@@ -238,7 +240,6 @@ export default {
       );
       return selectedRoom.id;
     },
-
   },
   created() {
     this.$store.dispatch('fetchDataFromPagesApi');
