@@ -9,13 +9,13 @@
         <div class="image">
           <figure id="imagemap">
             <!-- modal -->
+
             <modal
               :modalOpen="modalOpen"
               :closeModal="closeModal"
               :video="video"
               :roomId="roomId"
             ></modal>
-
             <div class="landscape">
               <img
                 class="desktop-room-image"
@@ -142,6 +142,7 @@ export default {
       roomId: null,
       video: null,
       desktopImg: '',
+      loginOpen: false,
     };
   },
   methods: {

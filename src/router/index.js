@@ -16,8 +16,12 @@ const routes = [
   },
   {
     path: '/auth',
-    component: UserAuth,
+    component: {
+      default: Main,
+      helper: UserAuth,
+    },
   },
+
   { path: '/notFound(.*)', redirect: '/' },
 ];
 

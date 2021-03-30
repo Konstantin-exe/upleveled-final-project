@@ -3,6 +3,18 @@
     <div v-show="modalOpen" class="modal-mask" v-if="video">
       <div class="modal-wrapper" @click.self="closeModal">
         <div class="modal-container">
+          <form name="user-auth">
+            <div class="form-control">
+              <label for="name">Username</label>
+              <input type="text" id="name" />
+            </div>
+            <div>
+              <label for="password">Password</label>
+              <input type="password" id="password" />
+            </div>
+            <a type="button">Login</a>
+            <a type="button" mode="flat">Signup</a>
+          </form>
           <div class="modal-header">
             <h4 class="modal-title">
               {{ video.title.rendered }}

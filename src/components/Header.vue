@@ -8,7 +8,52 @@
         /></a>
       </div>
       <div class="col-1">
-        <button id="show-login">Login</button>
+        <button id="show-login" @click="openLogin">Login</button>
+        <div v-show="loginOpen" class="modal-mask">
+          <div class="modal-wrapper" @click.self="closeLogin">
+            <div class="modal-container">
+              <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button
+                  @click="closeLogin"
+                  type="button"
+                  class="btn btn-outline-dark"
+                >
+                  Schließen
+                </button>
+              </div>
+
+              <div class="modal-body ">
+                <div class="row container">
+                  <div class=" col-md embed-responsive embed-responsive-16by9">
+                    <form name="user-auth" @submit.prevent="submitForm">
+                      <div class="form-control">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" v-model="username" />
+                      </div>
+                      <div>
+                        <label for="password">Password</label>
+                        <input
+                          type="password"
+                          id="password"
+                          v-model="password"
+                        />
+                      </div>
+                      <p v-if="!formIsValid">
+                        Please enter a valid password (at least 6 characters)
+                      </p>
+                      <button type="button">{{ submitButtonCaption }}</button>
+                      <button type="button" mode="flat" @click="switchAuthMode">
+                        {{ switchModeButtonCaption }}
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button
           @click="toggleNavbarRight"
           class="btn btn-outline-dark float-right"
@@ -93,17 +138,40 @@ export default {
   data() {
     return {
       navOpen: false,
+      loginOpen: false,
+      username: '',
+      password: '',
+      formIsValid: true,
+      mode: 'login',
     };
   },
-  // created() {
-  //   window.addEventListener('toggleNavBarRight', this.toggleNavbarRight),
-  //     window.addEventListener('toggleNavBarBottom', this.toggleNavbarBottom);
-  // },
+
   methods: {
+    submitForm() {
+      this.formIsValid = true;
+      if (this.username === '' || this.password.length < 6) {
+        this.formIsValid = false;
+        return;
+      }
+    },
+
+    switchAuthMode() {
+      if (this.mode === 'login') {
+        this.mode = 'signup';
+      } else {
+        this.mode = 'login';
+      }
+    },
+
     openNav() {
       this.navOpen = !this.navOpen;
     },
-
+    openLogin() {
+      this.loginOpen = !this.loginOpen;
+    },
+    closeLogin() {
+      this.loginOpen = false;
+    },
     roomThumbnailImg(id) {
       const room = this.dataFromPagesApi.find((content) => {
         if (content.meta_box.content_type === 'room' && content.id === id) {
@@ -174,6 +242,23 @@ export default {
     },
   },
   computed: {
+    submitButtonCaption() {
+      if (this.mode === 'login') {
+        return 'Login';
+      } else {
+        return 'Signup';
+      }
+    },
+    switchModeButtonCaption() {
+      if (this.mode === 'login') {
+        return 'Signup instead';
+      } else {
+        return 'Login instead';
+      }
+    },
+    signup() {
+      return this.$store.state.signup;
+    },
     dataFromPagesApi() {
       return this.$store.state.dataFromPagesApi;
     },
