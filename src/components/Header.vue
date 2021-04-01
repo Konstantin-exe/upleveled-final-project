@@ -26,23 +26,29 @@
               <div class="modal-body ">
                 <div class="row container">
                   <div class=" col-md embed-responsive embed-responsive-16by9">
-                    <form name="user-auth" @submit.prevent="submitForm">
+                    <form name="user-auth" @submit.prevent="submitForm()">
                       <div class="form-control">
                         <label for="username">Username</label>
-                        <input type="text" id="username" v-model="username" />
+                        <input
+                          type="text"
+                          id="username"
+                          v-model="form.username"
+                        />
                       </div>
                       <div>
                         <label for="password">Password</label>
                         <input
                           type="password"
                           id="password"
-                          v-model="password"
+                          v-model="form.password"
                         />
                       </div>
                       <p v-if="!formIsValid">
                         Please enter a valid password (at least 6 characters)
                       </p>
-                      <button type="button">{{ submitButtonCaption }}</button>
+                      <button type="submit">
+                        {{ submitButtonCaption }}
+                      </button>
                       <button type="button" mode="flat" @click="switchAuthMode">
                         {{ switchModeButtonCaption }}
                       </button>
@@ -132,6 +138,7 @@
 
 <script>
 import $ from 'jquery';
+import axios from 'axios';
 
 export default {
   name: 'Header',
@@ -143,16 +150,28 @@ export default {
       password: '',
       formIsValid: true,
       mode: 'login',
+      form: {
+        username: '',
+        password: '',
+      },
     };
   },
 
   methods: {
     submitForm() {
       this.formIsValid = true;
-      if (this.username === '' || this.password.length < 6) {
-        this.formIsValid = false;
-        return;
-      }
+      // if (this.username === '' || this.password.length < 6) {
+      //   this.formIsValid = false;
+      //   return;
+      // }
+      axios
+        .post('http://localhost:3000/api/create-user', this.form)
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     },
 
     switchAuthMode() {
