@@ -46,7 +46,7 @@
                       <p v-if="!formIsValid">
                         Please enter a valid password (at least 6 characters)
                       </p>
-                      <button type="submit">
+                      <button type="submitButtonCaption">
                         {{ submitButtonCaption }}
                       </button>
                       <button type="button" mode="flat" @click="switchAuthMode">
@@ -158,14 +158,18 @@ export default {
   },
 
   methods: {
+    // submitForm() {
+    // this.formIsValid = true;
+    // if (this.username === '' || this.password.length < 6) {
+    //   this.formIsValid = false;
+    //   return;
+    // }
+    // },
     submitForm() {
-      this.formIsValid = true;
-      // if (this.username === '' || this.password.length < 6) {
-      //   this.formIsValid = false;
-      //   return;
-      // }
       axios
-        .post('http://localhost:3000/api/create-user', this.form)
+        .post('http://localhost:3000/api/create-user', this.form, {
+          withCredentials: true,
+        })
         .then(function(res) {
           console.log(res);
         })
@@ -265,7 +269,7 @@ export default {
       if (this.mode === 'login') {
         return 'Login';
       } else {
-        return 'Signup';
+        return 'submit';
       }
     },
     switchModeButtonCaption() {
@@ -275,9 +279,7 @@ export default {
         return 'Login instead';
       }
     },
-    signup() {
-      return this.$store.state.signup;
-    },
+
     dataFromPagesApi() {
       return this.$store.state.dataFromPagesApi;
     },

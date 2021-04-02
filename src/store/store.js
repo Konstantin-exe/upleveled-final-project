@@ -18,20 +18,6 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    // signup(userName, password) {
-    //   axios
-    //     .post('http://localhost:3000/api/create-user', {
-    //       userName: userName,
-    //       password: password,
-    //     })
-    //     .then(function(res) {
-    //       console.log(res);
-    //     })
-    //     .catch(function(err) {
-    //       console.log(err);
-    //     });
-    // },
-
     fetchDataFromPagesApi({ commit }) {
       axios
         .get('https://entdecken.konzerthaus.at/c-control/wp-json/wp/v2/pages')
