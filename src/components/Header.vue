@@ -166,16 +166,30 @@ export default {
     // }
     // },
     submitForm() {
-      axios
-        .post('http://localhost:3000/api/create-user', this.form, {
-          withCredentials: true,
-        })
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch(function(err) {
-          console.log(err);
-        });
+      if (this.mode === 'signup') {
+        axios
+          .post('http://localhost:3000/api/create-user', this.form, {
+            withCredentials: true,
+          })
+          .then(function(res) {
+            console.log(res);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      }
+      if (this.mode === 'login') {
+        axios
+          .post('http://localhost:3000/api/login-user', this.form, {
+            withCredentials: true,
+          })
+          .then(function(res) {
+            console.log(res);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      }
     },
 
     switchAuthMode() {
@@ -267,7 +281,7 @@ export default {
   computed: {
     submitButtonCaption() {
       if (this.mode === 'login') {
-        return 'Login';
+        return 'login';
       } else {
         return 'submit';
       }
